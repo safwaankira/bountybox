@@ -1,0 +1,1217 @@
+{
+  "version": 1,
+  "entries": {
+    ".bun-version": {
+      "hash": "56b0485099b6c5427d3b68c042fd05b632d5e52e924c5064473389812227164c",
+      "pulledAt": "2026-10-28T22:59:18.379Z"
+    },
+    ".foundry-version": {
+      "hash": "b59269d636da76a16dca895a43085d37114d105ca9f933cb45d3ec23fdfe0845",
+      "pulledAt": "2026-10-28T22:59:18.380Z"
+    },
+    ".oxlintrc.json": {
+      "hash": "5f1d92cb882c4bb23420d87082a9d5f1bef8d9bbbab5587bf8a49b70464da7ff",
+      "pulledAt": "2026-10-28T22:59:18.380Z"
+    },
+    "AGENTS.md": {
+      "hash": "9e2304e61a8173ba214d1af0f407aa9ff3c602bdbc14907985d79633b652308f",
+      "pulledAt": "2026-11-01T16:27:34.728Z"
+    },
+    "DEPLOY_MAINNET.md": {
+      "hash": "defddc16a152dd1cff716af75bca5a224d0dc2c444a19143d4b8c5bbf88b044c",
+      "pulledAt": "2026-11-01T16:27:34.729Z"
+    },
+    "README.md": {
+      "hash": "5415596f4fa0d895b28a16d647931891d4ed8e1c04b7518e8bede39a82772064",
+      "pulledAt": "2026-11-01T16:27:34.730Z"
+    },
+    "bun.lock": {
+      "hash": "6ae5fd0dba4929d90e314ec45d0464f590018b5a422748fcab08b0d5390179cc",
+      "pulledAt": "2026-10-30T12:11:33.412Z"
+    },
+    "console.jsonl": {
+      "hash": "b345d432d26a70e04e62d9d6198fac318030c6f39a6e38f75a272477a1e0d1c4",
+      "pulledAt": "2026-10-28T22:59:18.383Z"
+    },
+    "foundry.toml": {
+      "hash": "d4487433e6302f64723a9498dbecef26761dfbe156a4599a04ff2f93cf4813bf",
+      "pulledAt": "2026-10-28T22:59:18.383Z"
+    },
+    "index.html": {
+      "hash": "cae94bd96d626b4c78e723a9ce93cb26ad08f08ed1b2e365f9ca2938324c8f4d",
+      "pulledAt": "2026-10-28T22:59:18.384Z"
+    },
+    "package.json": {
+      "hash": "cde3507fbbe5661971c53fd15ae1894b02beb75a81d15c6a5f2f917845b3c960",
+      "pulledAt": "2026-10-30T12:11:33.414Z"
+    },
+    "postcss.config.js": {
+      "hash": "f0156321fafa19749b38a82ea29e7b1786a1f727b67372ef40cc66de0ed898fb",
+      "pulledAt": "2026-10-28T22:59:18.385Z"
+    },
+    "remappings.txt": {
+      "hash": "7db29ab99ec9f13cfd2dc2c9c746f77e57f85c17c6186a15204e1dfdcfadd29c",
+      "pulledAt": "2026-10-28T22:59:18.385Z"
+    },
+    "tailwind.config.js": {
+      "hash": "96e72908328954920bc0840fa575f9114863576deb3cab9ec61951a3181650dd",
+      "pulledAt": "2026-10-28T22:59:18.385Z"
+    },
+    "tsconfig.json": {
+      "hash": "1e63fbe66b0fe15f7dc30d4ffd461ce1b8996ee10f584ae5dce7ae6159a0dc60",
+      "pulledAt": "2026-10-30T12:11:33.416Z"
+    },
+    "vite.config.ts": {
+      "hash": "72fc429b1426e7579719637a8333ad7845334c6dddf97ecf36b71664167501f5",
+      "pulledAt": "2026-10-30T12:11:33.417Z"
+    },
+    "contracts/BountyBox.sol": {
+      "hash": "7359e29a06d4864a41cfe1bd4f755f1f5e69080a99cff66e10b1c728d41fbdff",
+      "pulledAt": "2026-10-28T22:59:18.386Z"
+    },
+    "scripts/check.sh": {
+      "hash": "b2f9dc0c31f73e21e4b6ed820b2caa0c2b8ed88b8ae69301abd010683a050011",
+      "pulledAt": "2026-10-28T22:59:18.386Z"
+    },
+    "scripts/compass-deploy-helpers.ts": {
+      "hash": "1e8cdacd486c7e6258747d042ca5ac2566abba352d400b7779c9a3306ee0bee8",
+      "pulledAt": "2026-10-28T22:59:18.387Z"
+    },
+    "scripts/compass-deploy.ts": {
+      "hash": "f63f5435051a012e8a3e3a46ff962d9c3c795f3347e1604778d920c5b27f0737",
+      "pulledAt": "2026-10-28T22:59:18.388Z"
+    },
+    "scripts/fetch-abi.ts": {
+      "hash": "76641b2506360fa6d962689272e672adf5f4daf3d8a8301cb20ccd32fb64d769",
+      "pulledAt": "2026-10-28T22:59:18.388Z"
+    },
+    "scripts/self-deploy.ts": {
+      "hash": "45e349eea220ada055a06fd16b80d042ff6ae9b052d00b9e1483220fdf730978",
+      "pulledAt": "2026-10-28T22:59:18.388Z"
+    },
+    "src/App.tsx": {
+      "hash": "a5f5490e3acb281ee65ba48ae5bf98eeeb726b5eb0e60dae25d071fd88c89f18",
+      "pulledAt": "2026-10-31T22:27:06.519Z"
+    },
+    "src/config.ts": {
+      "hash": "d71ec688417cbc969fa1bf3842f34562a1fe2b614176401fa308d4dc01b5166c",
+      "pulledAt": "2026-10-30T12:11:33.425Z"
+    },
+    "src/console-capture.ts": {
+      "hash": "ab682e27bfb8efb8b1084ab91ff604baee9b2128892a8036dc0584d82733d3ce",
+      "pulledAt": "2026-10-28T22:59:18.389Z"
+    },
+    "src/index.css": {
+      "hash": "2c9688d37d20c610c0b1728bc07b1981d6fe416f84cff2b4228dfb278a1dc162",
+      "pulledAt": "2026-10-31T22:27:06.520Z"
+    },
+    "src/main.tsx": {
+      "hash": "f4e2bb4b120910ba45687c6c6259aab5bd3121364ce76d11cca515becc36b49e",
+      "pulledAt": "2026-10-31T22:27:06.521Z"
+    },
+    "src/onchain-facts.ts": {
+      "hash": "c7c314ada2f6be684dcd24c703fee3fec68f8bc0a2c7c9d1bcf3633c33199abd",
+      "pulledAt": "2026-10-28T22:59:18.390Z"
+    },
+    "src/onchain-money.ts": {
+      "hash": "1ac379552459f345f429d85b6d3f9f5f052be0c62ab630c6b111ea6f7a78af4f",
+      "pulledAt": "2026-10-28T22:59:18.390Z"
+    },
+    "src/onchain-wait.ts": {
+      "hash": "e6b89dcf266213adea50cd35dd761aa8adfc4fb121dd90c702fb635d98bb1577",
+      "pulledAt": "2026-10-28T22:59:18.390Z"
+    },
+    "src/router.tsx": {
+      "hash": "893c0679c9295d3f1175a1fa655afcb31b6fe9a9edabe081faa212c2319a9c65",
+      "pulledAt": "2026-10-28T22:59:18.391Z"
+    },
+    "src/tracing.ts": {
+      "hash": "3ed5452d5abd6057c818e3362be325c3f1566523927e496e49e0eaf1bafd64b8",
+      "pulledAt": "2026-10-28T22:59:18.391Z"
+    },
+    "src/vite-env.d.ts": {
+      "hash": "f0cae9310714bd1aab3faa90d9aec180b5aade8f97a0ba1a05dedf16982bd9e7",
+      "pulledAt": "2026-10-30T12:11:33.427Z"
+    },
+    "contracts/cache/solidity-files-cache.json": {
+      "hash": "2360d857414e436f8c9b46c31c611d7c43d79e142a79181727a6e6eadc3af5d8",
+      "pulledAt": "2026-11-01T17:24:11.052Z"
+    },
+    "contracts/contract-metadata/.gitkeep": {
+      "hash": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "pulledAt": "2026-10-28T22:59:18.392Z"
+    },
+    "contracts/contract-metadata/BountyBox.json": {
+      "hash": "66675aaf7ad56fb0fdb75e7b97e275ef8d77cc2c3b650b95d36dca130880acf2",
+      "pulledAt": "2026-10-28T22:59:18.392Z"
+    },
+    "contracts/script/Create2Factory.sol": {
+      "hash": "4b2d23e8364e58e08460c39d6c26dced67b82b7e039c306c671245c4f012c38b",
+      "pulledAt": "2026-10-28T22:59:18.392Z"
+    },
+    "contracts/script/DeployBountyBox.s.sol": {
+      "hash": "3cb947920e64743baac94a4f54d709153f22ab083c5ef06988aca5d925194d7d",
+      "pulledAt": "2026-10-28T22:59:18.393Z"
+    },
+    "contracts/script/DeployCreate2.s.sol": {
+      "hash": "031692db152269016a8df83293d429f69f90dcb0e563ecc5366a257cbcf334a1",
+      "pulledAt": "2026-10-28T22:59:18.393Z"
+    },
+    "contracts/test-integration/.gitkeep": {
+      "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "pulledAt": "2026-10-28T22:59:18.393Z"
+    },
+    "contracts/test/.gitkeep": {
+      "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "pulledAt": "2026-10-28T22:59:18.394Z"
+    },
+    "contracts/test/BountyBox.t.sol": {
+      "hash": "ef59ef6747eafd5e778cbb6092076e48e73ded95347fcfde88e1fb69e28dba8a",
+      "pulledAt": "2026-10-28T22:59:18.394Z"
+    },
+    "contracts/test/BountyBoxHardening.t.sol": {
+      "hash": "d73879a6c829efcaf8375d6e8adfd65d6b7d1c215e2ea9962c66c2179186c76e",
+      "pulledAt": "2026-10-28T22:59:18.394Z"
+    },
+    "contracts/test/BountyBoxPartialRefund.t.sol": {
+      "hash": "245526323cfb0fe3194f13adcc0b9646f3441fb13dc4b6f1bcd7fa6075b7cab1",
+      "pulledAt": "2026-10-28T22:59:18.395Z"
+    },
+    "contracts/test/DeployBountyBox.t.sol": {
+      "hash": "dfa731572a08d820e335b55436574b9ec0546d8c5f89949dad9e19d4d29daae4",
+      "pulledAt": "2026-10-28T22:59:18.395Z"
+    },
+    "lib/forge-std/.gitattributes": {
+      "hash": "d43e42793190ab90b245b9f5eed4d6c6913e8e71231aa703982c175834da5123",
+      "pulledAt": "2026-10-28T22:59:18.395Z"
+    },
+    "lib/forge-std/.gitignore": {
+      "hash": "e4dcbc27aa146e2f1e229445790ce9c2af39db903ebf93c7fc89762388227d9e",
+      "pulledAt": "2026-10-28T22:59:18.395Z"
+    },
+    "lib/forge-std/CONTRIBUTING.md": {
+      "hash": "2732beedfe7d7b1ac1344269aed75b9eb7f5f0903e24bad611e78def154b1867",
+      "pulledAt": "2026-10-28T22:59:18.396Z"
+    },
+    "lib/forge-std/LICENSE-APACHE": {
+      "hash": "50b6bf8bdb63265ce14953b480b7aaa0271e78f56843b99c184abd3ae5048cd7",
+      "pulledAt": "2026-10-28T22:59:18.396Z"
+    },
+    "lib/forge-std/LICENSE-MIT": {
+      "hash": "6d185dfe089d4de346d391fc5997fbd4739bad1d6556010413c10f420d704ecc",
+      "pulledAt": "2026-10-28T22:59:18.396Z"
+    },
+    "lib/forge-std/README.md": {
+      "hash": "257d2c692f847b166ba32bec7a15d3c426fa8ae7a5244b2d752b96443af83e42",
+      "pulledAt": "2026-10-28T22:59:18.397Z"
+    },
+    "lib/forge-std/RELEASE_CHECKLIST.md": {
+      "hash": "626d604142581e870f0936829ddd09fc7cb953652ddd9e45ba8513f8fa3c7485",
+      "pulledAt": "2026-10-28T22:59:18.397Z"
+    },
+    "lib/forge-std/foundry.toml": {
+      "hash": "ebf0083b7b67db5e9808db2d70fa9a51f903fd14d7751d5ec9a7b8a768af1abe",
+      "pulledAt": "2026-10-28T22:59:18.397Z"
+    },
+    "lib/forge-std/package.json": {
+      "hash": "d76d7594be85fdbffe91ed3918eaf1fb67ec9b00f453482f97c011408b024b70",
+      "pulledAt": "2026-10-28T22:59:18.397Z"
+    },
+    "src/bountybox/abi.ts": {
+      "hash": "3310b37ed81ffc5d38de12ec92b37c16a744b3533ba66a9dfd8b29d5549c42ea",
+      "pulledAt": "2026-11-01T16:27:34.761Z"
+    },
+    "src/bountybox/config.ts": {
+      "hash": "5e7ab86cb66b3287822efbc216a6345a0a3beea674b1be414d8e503f2b4d2709",
+      "pulledAt": "2026-10-28T22:59:18.398Z"
+    },
+    "src/bountybox/data.ts": {
+      "hash": "3a09c601b413af1cc19c0e0ca673bfd87f5d926d45e4696f7c75ebdfbc5edf83",
+      "pulledAt": "2026-11-01T16:27:34.762Z"
+    },
+    "src/bountybox/format.ts": {
+      "hash": "a590decd94f3b805b6f1aa6f51af2bf03d3840ce114c07fc9a2bb9b05ed30a0a",
+      "pulledAt": "2026-10-31T22:27:06.537Z"
+    },
+    "src/bountybox/tx.ts": {
+      "hash": "3d9f240728ed19fd4225c367403aa0c370c6fe6b8dce0abaa68e2c9311b24a87",
+      "pulledAt": "2026-11-01T16:27:34.764Z"
+    },
+    "src/components/AddToPot.tsx": {
+      "hash": "3134b172968ed3692608179c827a6a255f8d27297bb1367d10259bc633867029",
+      "pulledAt": "2026-11-01T16:27:34.764Z"
+    },
+    "src/components/AmountField.tsx": {
+      "hash": "3e75a3efc87364f01e7227b3e506fca22217bb670b2fe52e101187b1714793f3",
+      "pulledAt": "2026-10-28T22:59:18.399Z"
+    },
+    "src/components/BountyCard.tsx": {
+      "hash": "8e6bb8b411eedfe9e8b3745fd5bd81a0d153b44bae5ee36173e5afc80a78e32b",
+      "pulledAt": "2026-10-31T22:27:06.538Z"
+    },
+    "src/components/ClaimsList.tsx": {
+      "hash": "ca9f5a20095360d7dcecaf5cf5a624078a6c5b2f6baccbde3679d1abe2ed5496",
+      "pulledAt": "2026-10-31T22:27:06.538Z"
+    },
+    "src/components/Contributors.tsx": {
+      "hash": "aa636f37b692f1b87cdc90fe7ec95126ae9616612c6838c0c710985e5ac1c4cc",
+      "pulledAt": "2026-10-31T22:27:06.539Z"
+    },
+    "src/components/GateButton.tsx": {
+      "hash": "ab7962318cacb2337ce65526c83bf18bca880fd2d99cc45dc1e003fef45ff71e",
+      "pulledAt": "2026-10-28T22:59:18.399Z"
+    },
+    "src/components/Header.tsx": {
+      "hash": "0a5032e218ad3ce9dfa1c3263fa7f33707fd9e1f455a87543cdc37fad784288e",
+      "pulledAt": "2026-10-31T22:27:06.540Z"
+    },
+    "src/components/RefundPanel.tsx": {
+      "hash": "1b8fcd291953051e96c238cd440d1eb028d97ac02351b1773b9370b37b35228e",
+      "pulledAt": "2026-10-30T12:11:33.439Z"
+    },
+    "src/components/SubmitClaim.tsx": {
+      "hash": "4463235b8b3acd6607a00966220f46206b6b205a9c47079125e7a0eaf90616e8",
+      "pulledAt": "2026-10-30T12:11:33.439Z"
+    },
+    "src/components/TxStatus.tsx": {
+      "hash": "58a5b5035beca49934de284edb38c406d30e033c56ac35896308da6d32749432",
+      "pulledAt": "2026-10-31T22:27:06.541Z"
+    },
+    "src/pages/BountyPage.tsx": {
+      "hash": "321c731ae41f6048ff716d1b97c3a2d33e6b0c77401c1b2ac3271e9d9454291f",
+      "pulledAt": "2026-11-01T16:27:34.767Z"
+    },
+    "src/pages/Create.tsx": {
+      "hash": "45e0c037aeac0e412df828861d3a2319c46030032389c7cbbc0dd9f06ea78c76",
+      "pulledAt": "2026-11-01T16:27:34.768Z"
+    },
+    "src/pages/Home.tsx": {
+      "hash": "b6f93864aaacdd9fc942f40520991b2fb985e8e71cadfc9b061ce3602cb022d1",
+      "pulledAt": "2026-11-01T16:27:34.768Z"
+    },
+    ".agents/skills/example/SKILL.md": {
+      "hash": "bc2942d9dd52994c71121705e5d42aa5f0e0678a65ed4b4d0d7246b4d17df138",
+      "pulledAt": "2026-10-28T22:59:18.402Z"
+    },
+    "contracts/out/Base.sol/CommonBase.json": {
+      "hash": "0fccb977314b7071849244da9514943b9c48ec01432ed4312dace695622a71ad",
+      "pulledAt": "2026-11-01T17:24:11.071Z"
+    },
+    "contracts/out/Base.sol/ScriptBase.json": {
+      "hash": "9af939307e3a058fa6f3708f09020575d1dd49f48e4fb085a18a3027cd0a7adb",
+      "pulledAt": "2026-11-01T17:24:11.072Z"
+    },
+    "contracts/out/Base.sol/TestBase.json": {
+      "hash": "336ef68859a7d27c30e8c3a508b08d6ff61c9d7a59d9b716c54bb525e629567d",
+      "pulledAt": "2026-11-01T17:24:11.072Z"
+    },
+    "contracts/out/BountyBox.sol/BountyBox.json": {
+      "hash": "831c6440909896dedd447ce6cdd08e386a4c0ac290875919d31090741886009b",
+      "pulledAt": "2026-11-01T17:24:11.073Z"
+    },
+    "contracts/out/BountyBox.t.sol/Attacker.json": {
+      "hash": "a375f2d39279b4b18b8c4eb5c89086534a20bd4585e5615fc90e6b72f52edd5b",
+      "pulledAt": "2026-11-01T17:24:11.073Z"
+    },
+    "contracts/out/BountyBox.t.sol/BountyBoxHandler.json": {
+      "hash": "dbbf3b156737f2908448932c1b1f2c37610a5e8183026eeb875e32ead44dbb49",
+      "pulledAt": "2026-11-01T17:24:11.074Z"
+    },
+    "contracts/out/BountyBox.t.sol/BountyBoxInvariantTest.json": {
+      "hash": "83079a3b7e5a70c7bd3fb03f1441421fc54c1488276b252761dab3120e9966f2",
+      "pulledAt": "2026-11-01T17:24:11.076Z"
+    },
+    "contracts/out/BountyBox.t.sol/BountyBoxTest.json": {
+      "hash": "3c93576d1febe4467c00598a314d51f1e86cbea4ab131a240b3254c2a253debd",
+      "pulledAt": "2026-11-01T17:24:11.079Z"
+    },
+    "contracts/out/BountyBox.t.sol/ITokenHook.json": {
+      "hash": "d5b0d861cfd307777a7f9d151fba7a11e5d906843d2ce5972f6530d63ea16148",
+      "pulledAt": "2026-11-01T17:24:11.079Z"
+    },
+    "contracts/out/BountyBox.t.sol/MockUSDC.json": {
+      "hash": "75f8acc132930e51ed09a946e2c660241197075e01e3c9a7e60488a628a40197",
+      "pulledAt": "2026-11-01T17:24:11.080Z"
+    },
+    "contracts/out/BountyBoxHardening.t.sol/BountyBoxHardeningInvariantTest.json": {
+      "hash": "8c54b143aefd4ce55a9a890f2a6b4266b387caef6ba5061ad983688c0147a807",
+      "pulledAt": "2026-11-01T17:24:11.081Z"
+    },
+    "contracts/out/BountyBoxHardening.t.sol/BountyBoxHardeningTest.json": {
+      "hash": "d4101ef85e9d5e322bb7fab38af41fea7dd2673a4866d00caa3fbd3d6452fd41",
+      "pulledAt": "2026-11-01T17:24:11.083Z"
+    },
+    "contracts/out/BountyBoxHardening.t.sol/HardeningHandler.json": {
+      "hash": "49be2256d7dc4745213fa8245538f58d8a44bb5b13530b1db962a234de4856c6",
+      "pulledAt": "2026-11-01T17:24:11.086Z"
+    },
+    "contracts/out/BountyBoxPartialRefund.t.sol/BountyBoxPartialRefundTest.json": {
+      "hash": "f01997ddedb455f6c3342ff8d9773b1484490287a0f6efba6548301e89162c56",
+      "pulledAt": "2026-11-01T17:24:11.087Z"
+    },
+    "contracts/out/Create2.sol/Create2.json": {
+      "hash": "5a4b0c7ebbac1a18cbff9332144607c95e60a1fd18c99445dc45e646dbca7872",
+      "pulledAt": "2026-11-01T17:24:11.124Z"
+    },
+    "contracts/out/Create2Factory.sol/Create2Factory.json": {
+      "hash": "41471d615e40e39d8986ccea9aa687e4f4fbfd15550fb095e2180954808381bf",
+      "pulledAt": "2026-11-01T17:24:11.124Z"
+    },
+    "contracts/out/DeployBountyBox.s.sol/DeployBountyBox.json": {
+      "hash": "ae9c0d119cced72cc7034614b3d1ac3a3b20b1347c730451318b0c5e400052cf",
+      "pulledAt": "2026-11-01T17:24:11.125Z"
+    },
+    "contracts/out/DeployBountyBox.s.sol/IDecimals.json": {
+      "hash": "4e1421518a49a48d771648369e47f1cfbb8306e880df2f9938fc409c8a1a6eb9",
+      "pulledAt": "2026-10-30T12:11:33.460Z"
+    },
+    "contracts/out/DeployBountyBox.t.sol/DeployBountyBoxTest.json": {
+      "hash": "b0fb5ca2ea76af6b42eca3d9a4badf604f8d0e168b7d2c69de21e8fbb397a010",
+      "pulledAt": "2026-11-01T17:24:11.126Z"
+    },
+    "contracts/out/DeployCreate2.s.sol/DeployCreate2.json": {
+      "hash": "5cfb0027d69094deb4722b22746304152abaf14dbfa1138b8b19f7265b95bc9a",
+      "pulledAt": "2026-11-01T17:24:11.129Z"
+    },
+    "contracts/out/Errors.sol/Errors.json": {
+      "hash": "3174695e38e927a7ad4d7f0dd6fcfbc891b6b54976885154de961bfe82677ef6",
+      "pulledAt": "2026-11-01T17:24:11.130Z"
+    },
+    "contracts/out/IERC1363.sol/IERC1363.json": {
+      "hash": "13bcf1515e7641b4f5aed5a1afff165ca766ebf87d89a56de032a64407897e75",
+      "pulledAt": "2026-11-01T17:24:11.130Z"
+    },
+    "contracts/out/IERC165.sol/IERC165.json": {
+      "hash": "bca22e051902a99825987d56f71cdb64c0a36d82b26683334da454fb54c93ee1",
+      "pulledAt": "2026-11-01T17:24:11.132Z"
+    },
+    "contracts/out/IERC20.sol/IERC20.json": {
+      "hash": "24b6d69839039cf6655904ef7e66d24878360a2584f48063bd1c7d7b33f3d745",
+      "pulledAt": "2026-11-01T17:24:11.132Z"
+    },
+    "contracts/out/IMulticall3.sol/IMulticall3.json": {
+      "hash": "3b4a16e39ad3286af9705fa0a0b7d678d5c31f6e98306e2d27c51da3e0d869f6",
+      "pulledAt": "2026-11-01T17:24:11.132Z"
+    },
+    "contracts/out/LowLevelCall.sol/LowLevelCall.json": {
+      "hash": "cb074c8d81a63ba96909bd48d45a261c106448aaa923792c4e1c26cb528d512d",
+      "pulledAt": "2026-11-01T17:24:11.133Z"
+    },
+    "contracts/out/ReentrancyGuard.sol/ReentrancyGuard.json": {
+      "hash": "857ebabc499d84acdbf060f3fbb24b4bd1f8d71960a0651ce306e9f66f5583be",
+      "pulledAt": "2026-11-01T17:24:11.133Z"
+    },
+    "contracts/out/SafeERC20.sol/SafeERC20.json": {
+      "hash": "e910a3710067e6e428a8808e48e4ff1aefa02bbb0a393f4fba14e51dc5e20cfa",
+      "pulledAt": "2026-11-01T17:24:11.134Z"
+    },
+    "contracts/out/Script.sol/Script.json": {
+      "hash": "3f025eaf660e5298c102c1cc215336900b4884c5fada92b8f32b47a2d97955e0",
+      "pulledAt": "2026-11-01T17:24:11.135Z"
+    },
+    "contracts/out/StdAssertions.sol/StdAssertions.json": {
+      "hash": "e261af022823f6087bba443b10e8ba0c70433af88a2b9b0de28f278f0363c172",
+      "pulledAt": "2026-11-01T17:24:11.135Z"
+    },
+    "contracts/out/StdChains.sol/StdChains.json": {
+      "hash": "2193ca088a9cd8ca07e3ff95a73508a575a085e99b2c1adf61f7224f33c072bf",
+      "pulledAt": "2026-11-01T17:24:11.135Z"
+    },
+    "contracts/out/StdCheats.sol/StdCheats.json": {
+      "hash": "1bad4b689d9ee6baee772a62dec179ac2e96debdcc5072deb8748f7a67b7dfcb",
+      "pulledAt": "2026-11-01T17:24:11.135Z"
+    },
+    "contracts/out/StdCheats.sol/StdCheatsSafe.json": {
+      "hash": "d7a3ade8f9e11cd38312e907e767120a90e260a11cec23db7256d9f7125b545e",
+      "pulledAt": "2026-11-01T17:24:11.136Z"
+    },
+    "contracts/out/StdConstants.sol/StdConstants.json": {
+      "hash": "0dfb47915c138cf80c8f676fec7d9c81077393b6c60b7917238bf8acccc9dd8e",
+      "pulledAt": "2026-11-01T17:24:11.136Z"
+    },
+    "contracts/out/StdError.sol/stdError.json": {
+      "hash": "89f88d8484f18a913ab8a77bbfdcaf7ecbe26f53e5e48ac1d465750a761867bf",
+      "pulledAt": "2026-11-01T17:24:11.137Z"
+    },
+    "contracts/out/StdInvariant.sol/StdInvariant.json": {
+      "hash": "7a5ef0c94f955c5302c2ec4002e8d6b0f2db5fa940b502d8eacf4019b86e6f6f",
+      "pulledAt": "2026-11-01T17:24:11.137Z"
+    },
+    "contracts/out/StdJson.sol/stdJson.json": {
+      "hash": "09cedcf207248402094ed7671899a82eaadf18a624508ddfa5f464e1aca6e77c",
+      "pulledAt": "2026-11-01T17:24:11.137Z"
+    },
+    "contracts/out/StdMath.sol/stdMath.json": {
+      "hash": "6e8859fefd3a3f0d4737018711ae1285cef923f7867fd05660d6dec6d2c9b002",
+      "pulledAt": "2026-11-01T17:24:11.137Z"
+    },
+    "contracts/out/StdStorage.sol/stdStorage.json": {
+      "hash": "d9530caa0ae2ea7e0e6d272fb668a15a892afea19276a89dc942654187738611",
+      "pulledAt": "2026-11-01T17:24:11.138Z"
+    },
+    "contracts/out/StdStorage.sol/stdStorageSafe.json": {
+      "hash": "6c0d67f46dafe2fbb452a656e95d2e04115f6c63a1f60dc9daa4e8e518908e91",
+      "pulledAt": "2026-11-01T17:24:11.138Z"
+    },
+    "contracts/out/StdStyle.sol/StdStyle.json": {
+      "hash": "4064c7b67389cc5de8dcf0d29ad9464d2eab0833c351ac705aad085f66062751",
+      "pulledAt": "2026-11-01T17:24:11.139Z"
+    },
+    "contracts/out/StdToml.sol/stdToml.json": {
+      "hash": "3c6d3017bc843553e87c98ef5df0df775bd7adac0675b0906dfb2522c187a517",
+      "pulledAt": "2026-11-01T17:24:11.139Z"
+    },
+    "contracts/out/StdUtils.sol/StdUtils.json": {
+      "hash": "e7813e3bb4e39d7752e1342df5beeaaead6b3dd8dd5fa430fdec87b600760baa",
+      "pulledAt": "2026-11-01T17:24:11.139Z"
+    },
+    "contracts/out/StorageSlot.sol/StorageSlot.json": {
+      "hash": "7661206f1c67bc5fb64b8bac4bc49037082d84d61580ce3922851fcb7b242a53",
+      "pulledAt": "2026-11-01T17:24:11.141Z"
+    },
+    "contracts/out/Test.sol/Test.json": {
+      "hash": "e0296a8d719b825b7d547c84554cbea32fe1f1ac4378f9c8729d37430804ff11",
+      "pulledAt": "2026-11-01T17:24:11.142Z"
+    },
+    "contracts/out/Vm.sol/Vm.json": {
+      "hash": "2a0b8f86654fa9e4c8a7a8b28c205b513c71a44ef8722cc531604d5f1817a562",
+      "pulledAt": "2026-11-01T17:24:11.146Z"
+    },
+    "contracts/out/Vm.sol/VmSafe.json": {
+      "hash": "b5db4781f41c0f0ef89274c5f8f2ee629fd7a0c51c6f56c76e1865f5f539a2a1",
+      "pulledAt": "2026-11-01T17:24:11.151Z"
+    },
+    "contracts/out/build-info/269371a303800219.json": {
+      "hash": "11dc15e06103c3c2ac46db1e7384db3cb7cc68b35f31cf20509896a109746fe9",
+      "pulledAt": "2026-10-28T22:59:18.418Z"
+    },
+    "contracts/out/build-info/2e5e465a161b32c1.json": {
+      "hash": "75019e75c5f8731b51fe5ad3d0b5dd49105b02ce34e5d2cb00b55304287ab769",
+      "pulledAt": "2026-10-28T22:59:18.420Z"
+    },
+    "contracts/out/build-info/c2d1169ede926227.json": {
+      "hash": "57e938a00795c4f828059164fd3c37ca7982bdb13dc4a57ddbba2816552b1f4d",
+      "pulledAt": "2026-10-28T22:59:18.420Z"
+    },
+    "contracts/out/console.sol/console.json": {
+      "hash": "6a93f076044a67eb0252b816f7b2ea6babebd7df3fa92bba156323da03adfb0b",
+      "pulledAt": "2026-11-01T17:24:11.154Z"
+    },
+    "contracts/out/safeconsole.sol/safeconsole.json": {
+      "hash": "6c97b4000e0f6511dea187eaf5de148082223475a9edf7ea85cf430d3e45dc9d",
+      "pulledAt": "2026-11-01T17:24:11.155Z"
+    },
+    "lib/forge-std/.github/CODEOWNERS": {
+      "hash": "6581f9b967d9892ab55f3d4a97ea4f805285a48edb922b23489b674763e5c251",
+      "pulledAt": "2026-10-28T22:59:18.421Z"
+    },
+    "lib/forge-std/.github/dependabot.yml": {
+      "hash": "5b7ca92e2a1b35550092b410b6640303bc13ad1d9fcde221b1de1622ef30052f",
+      "pulledAt": "2026-10-28T22:59:18.421Z"
+    },
+    "lib/forge-std/scripts/vm.py": {
+      "hash": "40971b61413aa75ec6111d7817af7ed51c19d5052a0a6f8504a568eb265ebb94",
+      "pulledAt": "2026-10-28T22:59:18.421Z"
+    },
+    "lib/forge-std/src/Base.sol": {
+      "hash": "76b05dda37981797d3d403f29fc6cad79b46e2fc11da47d649ff13acb69158b2",
+      "pulledAt": "2026-10-28T22:59:18.421Z"
+    },
+    "lib/forge-std/src/Config.sol": {
+      "hash": "850649e2ede6e0e1384ba00eba1335a7af7e97643c731a4587335c0f51f67041",
+      "pulledAt": "2026-10-28T22:59:18.421Z"
+    },
+    "lib/forge-std/src/LibVariable.sol": {
+      "hash": "0b789ace36e54d1746d08b9b161f5ab4c2fa55c8d30808421349ae33f703c797",
+      "pulledAt": "2026-10-28T22:59:18.421Z"
+    },
+    "lib/forge-std/src/Script.sol": {
+      "hash": "cfb5be01f4ddbc037a3502dac3d487d629a4c8b58aa9e2ec48c9fa1b334d96ec",
+      "pulledAt": "2026-10-28T22:59:18.421Z"
+    },
+    "lib/forge-std/src/StdAssertions.sol": {
+      "hash": "203de35565c3d68b6599f84e88068f79c23b53a80d18c46056e85d4c5f48613c",
+      "pulledAt": "2026-10-28T22:59:18.422Z"
+    },
+    "lib/forge-std/src/StdChains.sol": {
+      "hash": "981b7ce12f4bc3193c7914c68f51be74d1d03c33732db894f5d36ad8025ab4f5",
+      "pulledAt": "2026-10-28T22:59:18.422Z"
+    },
+    "lib/forge-std/src/StdCheats.sol": {
+      "hash": "988843996b3e8ebab594c659fba9502bab437220f84e7ded9a9e3f6e730d358e",
+      "pulledAt": "2026-10-28T22:59:18.422Z"
+    },
+    "lib/forge-std/src/StdConfig.sol": {
+      "hash": "bc9e89ad0fab53103f8301322739aaafc32a0cccb571132ee7f54f10b6a2feb5",
+      "pulledAt": "2026-10-28T22:59:18.422Z"
+    },
+    "lib/forge-std/src/StdConstants.sol": {
+      "hash": "17dfd996881264de1e6af6697a3dc7a56ae8ff0717e4cb4f1685bd7fb3a45147",
+      "pulledAt": "2026-10-28T22:59:18.422Z"
+    },
+    "lib/forge-std/src/StdError.sol": {
+      "hash": "c1f7271f11a44628810ef6beb2da0c43add131ff9cfcac4d7acd633c269ccf7d",
+      "pulledAt": "2026-10-28T22:59:18.422Z"
+    },
+    "lib/forge-std/src/StdInvariant.sol": {
+      "hash": "7d3a62087c7d06766e99f8e4f4e50997b0ff8730fb304986f2c4cd895a67fbbd",
+      "pulledAt": "2026-10-28T22:59:18.422Z"
+    },
+    "lib/forge-std/src/StdJson.sol": {
+      "hash": "556494110d1e791ce0992bf22c2ac6df5e614122659a97cd1269a8d9dce139c0",
+      "pulledAt": "2026-10-28T22:59:18.423Z"
+    },
+    "lib/forge-std/src/StdMath.sol": {
+      "hash": "7224cea66fc06c7a9d303084cccb14eaedffe4b21b3f9695d06dc590d2894d7d",
+      "pulledAt": "2026-10-28T22:59:18.423Z"
+    },
+    "lib/forge-std/src/StdStorage.sol": {
+      "hash": "8835d2e5de9ceca2a4988a212916216de052634584f832d5364dc8c42d460113",
+      "pulledAt": "2026-10-28T22:59:18.423Z"
+    },
+    "lib/forge-std/src/StdStyle.sol": {
+      "hash": "903ea6f4e4aa31e416b5043abecc09ced41dc78c9ce9dabb5c745337ee13139d",
+      "pulledAt": "2026-10-28T22:59:18.423Z"
+    },
+    "lib/forge-std/src/StdToml.sol": {
+      "hash": "682e9c74bd02de5df7be595d27fa44eeaf0a5d96ad5c2db507065386d35eb433",
+      "pulledAt": "2026-10-28T22:59:18.423Z"
+    },
+    "lib/forge-std/src/StdUtils.sol": {
+      "hash": "52d713d886305184e7ed3b3a2e5941ea1440f071d9c9a4d6fea618135e1d3f67",
+      "pulledAt": "2026-10-28T22:59:18.423Z"
+    },
+    "lib/forge-std/src/Test.sol": {
+      "hash": "2e69383110d088b4c413edf79bb71f9d05e4791625fb7fa53429d34440ea50dd",
+      "pulledAt": "2026-10-28T22:59:18.423Z"
+    },
+    "lib/forge-std/src/Vm.sol": {
+      "hash": "ad4bc58d4a2cfdb45c6439fe977a7ad390fd83e3e7485ec4597458a278993eeb",
+      "pulledAt": "2026-10-28T22:59:18.424Z"
+    },
+    "lib/forge-std/src/console.sol": {
+      "hash": "894dc6e40fe62d887df6243112d8c775df2db60babc3024ee04a5564b90af64d",
+      "pulledAt": "2026-10-28T22:59:18.424Z"
+    },
+    "lib/forge-std/src/console2.sol": {
+      "hash": "62d8ccbd118fec4f99c5e847322d6ca0d7fbe6a0a16e5a26b0590869fcd69357",
+      "pulledAt": "2026-10-28T22:59:18.424Z"
+    },
+    "lib/forge-std/src/safeconsole.sol": {
+      "hash": "fd74d8ed377e1470217cd6dce7699dcbc4e79b3893f17ae2a298c0e7e4418181",
+      "pulledAt": "2026-10-28T22:59:18.425Z"
+    },
+    "lib/forge-std/test/CommonBase.t.sol": {
+      "hash": "b66facae40cf67dba4e0a3924971873c23c4d5078404156054f8062a9d2cba0a",
+      "pulledAt": "2026-10-28T22:59:18.425Z"
+    },
+    "lib/forge-std/test/Config.t.sol": {
+      "hash": "a374bab9059a8b29f6e1d6bad115442c3b5abecd0147d66f7aec74857d2b395a",
+      "pulledAt": "2026-10-28T22:59:18.425Z"
+    },
+    "lib/forge-std/test/LibVariable.t.sol": {
+      "hash": "3ced9d2b5d3a088cfc992305798313ee929472e07bd94948c7819dda086d1df4",
+      "pulledAt": "2026-10-28T22:59:18.425Z"
+    },
+    "lib/forge-std/test/StdAssertions.t.sol": {
+      "hash": "a33da2d3aac6bb6b69de52b3f3a4aa58c2d9c181663ea6898da6531059748da9",
+      "pulledAt": "2026-10-28T22:59:18.425Z"
+    },
+    "lib/forge-std/test/StdChains.t.sol": {
+      "hash": "4237fb9cc061d0db2861fe5264425def41d61db98e085c8ef5851bd2f849c904",
+      "pulledAt": "2026-10-28T22:59:18.425Z"
+    },
+    "lib/forge-std/test/StdCheats.t.sol": {
+      "hash": "ad64c6d53ae3699326cc3a1cfa1c054b37d29d08e09ddebea0e831fc1bf4ed1a",
+      "pulledAt": "2026-10-28T22:59:18.425Z"
+    },
+    "lib/forge-std/test/StdConstants.t.sol": {
+      "hash": "c11d44d7c05dbe498dc6114a5ce0f77da0ce8f31e8b647bfaeba7b4bb77c0ff3",
+      "pulledAt": "2026-10-28T22:59:18.426Z"
+    },
+    "lib/forge-std/test/StdError.t.sol": {
+      "hash": "ffb8f44814e47aa7b7c5c3b25a77722386e1497d36e9848199e145ab7db6245e",
+      "pulledAt": "2026-10-28T22:59:18.426Z"
+    },
+    "lib/forge-std/test/StdJson.t.sol": {
+      "hash": "b94d6825c392a2be0b15047e6972ba6d0c27401701318bd5df8a9d3b5f8d8932",
+      "pulledAt": "2026-10-28T22:59:18.426Z"
+    },
+    "lib/forge-std/test/StdMath.t.sol": {
+      "hash": "5ef423c27bddb562a24a66248f1e377ac7b5bcfca7e842a06a56c67a7cb3ee4a",
+      "pulledAt": "2026-10-28T22:59:18.426Z"
+    },
+    "lib/forge-std/test/StdStorage.t.sol": {
+      "hash": "7de387469dc22d2b81bb58c9ec1bc3cceabf1d5f4baabe565d7861d7f09b782d",
+      "pulledAt": "2026-10-28T22:59:18.426Z"
+    },
+    "lib/forge-std/test/StdStyle.t.sol": {
+      "hash": "121ab9c2542ff6c48832ab64f358651c81d51d35ffdb93928d645c2d0fcb7f0e",
+      "pulledAt": "2026-10-28T22:59:18.426Z"
+    },
+    "lib/forge-std/test/StdToml.t.sol": {
+      "hash": "4512ece276443fc74d7d15266d7723335ce348053ced9bae6485e9110321d5b0",
+      "pulledAt": "2026-10-28T22:59:18.426Z"
+    },
+    "lib/forge-std/test/StdUtils.t.sol": {
+      "hash": "d6a1d0771e8ae447609060fa74c04f5843a7e5fb85d1d8ed867c8210317aedd4",
+      "pulledAt": "2026-10-28T22:59:18.426Z"
+    },
+    "lib/forge-std/test/Vm.t.sol": {
+      "hash": "6821007c669dda95eea215102bb82f61a575c12ae61f45e1d529d830c5e1e833",
+      "pulledAt": "2026-10-28T22:59:18.426Z"
+    },
+    "contracts/cache/DeployBountyBox.s.sol/5042/run-1793228304538.json": {
+      "hash": "2cf36499d539fb4f5a256058fc75a25ba9418fb457df4e38409277e09374dedc",
+      "pulledAt": "2026-10-28T22:59:18.427Z"
+    },
+    "contracts/cache/DeployBountyBox.s.sol/5042/run-latest.json": {
+      "hash": "2cf36499d539fb4f5a256058fc75a25ba9418fb457df4e38409277e09374dedc",
+      "pulledAt": "2026-10-30T12:11:33.490Z"
+    },
+    "contracts/out/interfaces/IERC165.sol/IERC165.json": {
+      "hash": "3f322afa98fb67135505fdeaeeb275282496556cf9f3736fabbb6500c3461f38",
+      "pulledAt": "2026-11-01T17:24:11.168Z"
+    },
+    "contracts/out/interfaces/IERC20.sol/IERC20.json": {
+      "hash": "0cafac955cf49cb5582827609ffd76f07aafc907c5a60c490376cecdc88c7d0c",
+      "pulledAt": "2026-11-01T17:24:11.168Z"
+    },
+    "lib/forge-std/.github/workflows/ci.yml": {
+      "hash": "177a1841f3528b297cf0fbffba5982f20635cb4dbd3a0c820431c3e592faca93",
+      "pulledAt": "2026-10-28T22:59:18.427Z"
+    },
+    "lib/forge-std/.github/workflows/sync.yml": {
+      "hash": "367fe7e6b6c946ab6a6c75cc183d2819c90ea5081d326c9c83a545134bfa0dad",
+      "pulledAt": "2026-10-28T22:59:18.427Z"
+    },
+    "lib/forge-std/src/interfaces/IERC1155.sol": {
+      "hash": "d10916158da2bbecc56364cda787da303b57313d478c150b1c79ac05d3b2936c",
+      "pulledAt": "2026-10-28T22:59:18.428Z"
+    },
+    "lib/forge-std/src/interfaces/IERC165.sol": {
+      "hash": "d9bea769cd3aa52c5dfbfe7b447a63b00ab22baaa4f9d2af789f44553078a27b",
+      "pulledAt": "2026-10-28T22:59:18.428Z"
+    },
+    "lib/forge-std/src/interfaces/IERC20.sol": {
+      "hash": "cb4bf7f4c0bc513e2c82f251a84e67d2e950cef12e570f40a0d4880b2e25fc9f",
+      "pulledAt": "2026-10-28T22:59:18.428Z"
+    },
+    "lib/forge-std/src/interfaces/IERC4626.sol": {
+      "hash": "5b9da91e1215dc84a606c06f636b34582aec6cdf35ae828dce3852f727d9278e",
+      "pulledAt": "2026-10-28T22:59:18.428Z"
+    },
+    "lib/forge-std/src/interfaces/IERC6909.sol": {
+      "hash": "44ef6ba5ab803241ed5992f35606820322e2df5947da488870c78f2181d97840",
+      "pulledAt": "2026-10-28T22:59:18.428Z"
+    },
+    "lib/forge-std/src/interfaces/IERC721.sol": {
+      "hash": "2e6e000940bf5278cf64f170ac839682667368a5aee7222b312e255ec8eda275",
+      "pulledAt": "2026-10-28T22:59:18.428Z"
+    },
+    "lib/forge-std/src/interfaces/IERC7540.sol": {
+      "hash": "5b9e0d90816f47628b2023351c84e9b8d8667f685c98234742be99dc8eaf2fb6",
+      "pulledAt": "2026-10-28T22:59:18.428Z"
+    },
+    "lib/forge-std/src/interfaces/IERC7575.sol": {
+      "hash": "15163bc29d96c6b905b53da06e243fbd2ae6b7c8984b8306ff4c9b0716ec055b",
+      "pulledAt": "2026-10-28T22:59:18.428Z"
+    },
+    "lib/forge-std/src/interfaces/IMulticall3.sol": {
+      "hash": "890a5b361034daa6006b3ba2275e743cd6197c4d81e3df5732cdce731d3c0868",
+      "pulledAt": "2026-10-28T22:59:18.429Z"
+    },
+    "lib/forge-std/test/compilation/CompilationScript.sol": {
+      "hash": "58e7d27d2c862e119a6851a5fd99c894d778441b3e5121c4c94047af2133bfaf",
+      "pulledAt": "2026-10-28T22:59:18.429Z"
+    },
+    "lib/forge-std/test/compilation/CompilationScriptBase.sol": {
+      "hash": "99cbc9ca01f6108199e18aff10132042707426ed9a4025c2afee003c3479cce3",
+      "pulledAt": "2026-10-28T22:59:18.429Z"
+    },
+    "lib/forge-std/test/compilation/CompilationTest.sol": {
+      "hash": "24fa43d5b532c9691f8e19176664631f95c30ec47134ec5e30ebf6ef96c6be51",
+      "pulledAt": "2026-10-28T22:59:18.429Z"
+    },
+    "lib/forge-std/test/compilation/CompilationTestBase.sol": {
+      "hash": "b56b1232e691f184313bfebedba532ddbcc6ae8810cee7c699320d386e7f218b",
+      "pulledAt": "2026-10-28T22:59:18.429Z"
+    },
+    "lib/forge-std/test/fixtures/broadcast.log.json": {
+      "hash": "567f1109599f4961096d36a5641d8115d73c098813331cff10b972490c72cc39",
+      "pulledAt": "2026-10-28T22:59:18.430Z"
+    },
+    "lib/forge-std/test/fixtures/config.toml": {
+      "hash": "94740ba258f40f52e77d45df237969741d31c7fa56f0e4e61986aec5f48b82dd",
+      "pulledAt": "2026-10-28T22:59:18.430Z"
+    },
+    "lib/forge-std/test/fixtures/test.json": {
+      "hash": "79965907225af6bd76ccc20c0279e84e1d916529a423fbaba8f5b6ef91d5ee26",
+      "pulledAt": "2026-10-28T22:59:18.430Z"
+    },
+    "lib/forge-std/test/fixtures/test.toml": {
+      "hash": "6996badd8df6c4f7a8aac58a1b8c97a7c0ba8ec302a3c4645f2042ae45354cf2",
+      "pulledAt": "2026-10-28T22:59:18.430Z"
+    },
+    "contracts/cache/DeployBountyBox.s.sol/5042/dry-run/run-1793228303969.json": {
+      "hash": "2cf36499d539fb4f5a256058fc75a25ba9418fb457df4e38409277e09374dedc",
+      "pulledAt": "2026-10-28T22:59:18.430Z"
+    },
+    "contracts/cache/DeployBountyBox.s.sol/5042/dry-run/run-latest.json": {
+      "hash": "2cf36499d539fb4f5a256058fc75a25ba9418fb457df4e38409277e09374dedc",
+      "pulledAt": "2026-10-30T12:11:33.496Z"
+    },
+    "netlify.toml": {
+      "hash": "046252b9944225b99b4fee822bad03eae14d5052bb8cbd6355aed1941252e43b",
+      "pulledAt": "2026-10-30T12:11:33.414Z"
+    },
+    "vercel.json": {
+      "hash": "0faf96401e6d774a6277f4df8a4883e33c9e5468b685f5ecad85221e01fa79a0",
+      "pulledAt": "2026-10-30T12:11:33.416Z"
+    },
+    "contracts/BountyBoxV2.sol": {
+      "hash": "757c83236c2af9e3540ffb10dcd5861f7b668dfffdc769953d590e4a7bfbf645",
+      "pulledAt": "2026-11-01T17:24:11.041Z"
+    },
+    "judge/api.ts": {
+      "hash": "0a1022d27083cc93b517e266bbf861b525d6182cd9e2cd629fad006a50f8ab4a",
+      "pulledAt": "2026-10-30T12:11:33.418Z"
+    },
+    "judge/chain.ts": {
+      "hash": "bd7c666ed855a962f309e75f7491dfcf8eb0d152e9507048d138a47fdc066747",
+      "pulledAt": "2026-11-01T16:27:34.737Z"
+    },
+    "judge/checks.ts": {
+      "hash": "b48f654c6cee3b4f2f064871c2265ce2032db2557225b0c37e12404a02fa0ae8",
+      "pulledAt": "2026-10-30T12:11:33.419Z"
+    },
+    "judge/config.ts": {
+      "hash": "04c1b176b6be6199789576f73915574f98ade508cb21741d00755744da11c6e2",
+      "pulledAt": "2026-10-31T22:27:06.510Z"
+    },
+    "judge/deps.ts": {
+      "hash": "88d859d8c01188b98d481b777fe6c16e712860a733fd94944e40061684c61838",
+      "pulledAt": "2026-10-30T12:11:33.419Z"
+    },
+    "judge/llm.ts": {
+      "hash": "36427092f3f607f362ef06c0d58d4cbc94d4ee5047ce60bf33c40e65990fe77a",
+      "pulledAt": "2026-10-30T12:11:33.419Z"
+    },
+    "judge/log.ts": {
+      "hash": "68c707c94c13f773e1ea6a6d77adb4bfbd75e0e01498bf7ecb011af1486fcc06",
+      "pulledAt": "2026-10-30T12:11:33.419Z"
+    },
+    "judge/run.ts": {
+      "hash": "964c8c0eabd1c141cdc509f5656cfee4c0520c8e70536f6d24e60ae98f0bbe58",
+      "pulledAt": "2026-11-01T16:27:34.739Z"
+    },
+    "judge/safeFetch.ts": {
+      "hash": "a6b6b9703b2a6237998c2e204dfccda55c6649dbac93b476cd5849bcc1b517d6",
+      "pulledAt": "2026-10-30T12:11:33.420Z"
+    },
+    "judge/signer.ts": {
+      "hash": "e7d69085c1ab5a6e592d63e081866e3f6fd078acfd512fb6d9f36e38f4c61f9f",
+      "pulledAt": "2026-10-30T12:11:33.420Z"
+    },
+    "judge/store.ts": {
+      "hash": "388d6f59db33e95e9c0aacadcaa37ea94b98140bc1dec05102e3540ed8c2039d",
+      "pulledAt": "2026-10-30T12:11:33.420Z"
+    },
+    "judge/types.ts": {
+      "hash": "131422ef26f29524c5df10c40eb8db38f71454a48e8aa86b9b99c5b01376da87",
+      "pulledAt": "2026-10-30T12:11:33.420Z"
+    },
+    "judge/verdict.ts": {
+      "hash": "aed4a7a82130c7c1dd963f92d02e18c709f832d75e8af6cbecfa066cc90b2b68",
+      "pulledAt": "2026-11-01T16:27:34.739Z"
+    },
+    "public/_redirects": {
+      "hash": "49dbab673306115d5745c7a868b43085e54fa63cccd39a2b5b58f9491ce6f941",
+      "pulledAt": "2026-10-30T12:11:33.420Z"
+    },
+    "scripts/judge-dev-server.ts": {
+      "hash": "9d35fc44fd23edd880d418dd32a82b18182ffa99f0b40abcd35ae625db9e527d",
+      "pulledAt": "2026-10-30T12:11:33.422Z"
+    },
+    "scripts/judge-lib.ts": {
+      "hash": "b80dacd57e24c891e1e3294297744a837d74f00c0904697db1961ccd17a4985e",
+      "pulledAt": "2026-10-30T12:11:33.423Z"
+    },
+    "scripts/judge-register-agent.ts": {
+      "hash": "ce50f74b639785cfb9a73b529d857b34b950e27e538314d0536d0aabde9170a5",
+      "pulledAt": "2026-10-30T12:11:33.423Z"
+    },
+    "scripts/judge-run.ts": {
+      "hash": "b7ca43e96ee881e39f60181e91f2d873f93c6fef1502a8617b215c508473cb0e",
+      "pulledAt": "2026-10-30T12:11:33.423Z"
+    },
+    "scripts/judge-selftest.ts": {
+      "hash": "3eb48e2ca1a6edf90d0c41b9baf62fad78373b0ac10eae376d556aa8b5756511",
+      "pulledAt": "2026-11-01T16:27:34.744Z"
+    },
+    "scripts/judge-setup-wallet.ts": {
+      "hash": "5a330650586ee4db7b11e415ccb052f163d5ec8f0179116a4012b89f36ff0b72",
+      "pulledAt": "2026-10-30T12:11:33.423Z"
+    },
+    "scripts/rpc-selftest.ts": {
+      "hash": "2902145363bb917479cc4476ebce41ba56c4d9f08b48c2c6e766766b59b90bb6",
+      "pulledAt": "2026-10-30T12:11:33.423Z"
+    },
+    "contracts/script/DeployBountyBoxV2.s.sol": {
+      "hash": "1d16b54bb64f6664cf7d4de82ed5f012bfbcface302dfae1c5a307ef4f204497",
+      "pulledAt": "2026-11-01T16:27:34.751Z"
+    },
+    "contracts/test/BountyBoxV2.Base.t.sol": {
+      "hash": "7121cf01598d894887d5096150b2e18966b537dbca6fe0b7f0ecde370d2ff769",
+      "pulledAt": "2026-11-01T16:27:34.752Z"
+    },
+    "contracts/test/BountyBoxV2.Fuzz.t.sol": {
+      "hash": "ad154d9fc9a56ac577b0719c4d2953fb1e669efa14599ad0c08db96bf4bdbfee",
+      "pulledAt": "2026-10-30T12:11:33.430Z"
+    },
+    "contracts/test/BountyBoxV2.Invariant.t.sol": {
+      "hash": "74f9b6ef7ff507d75674054ff06f675422efcd0b2aa86803ab917842eda77280",
+      "pulledAt": "2026-11-01T17:24:11.057Z"
+    },
+    "contracts/test/BountyBoxV2.Poster.t.sol": {
+      "hash": "b02079867b4b2709caa14cddc27a743bd79c1a20970f150449442d00608942fd",
+      "pulledAt": "2026-10-30T12:11:33.430Z"
+    },
+    "contracts/test/BountyBoxV2.Reentrancy.t.sol": {
+      "hash": "32a6a2de9c60b648967060dabcb2f3f1adfe24e3bbb02d0e3bc44067ce647065",
+      "pulledAt": "2026-10-30T12:11:33.430Z"
+    },
+    "contracts/test/BountyBoxV2.t.sol": {
+      "hash": "5a17b1352d0336828e2cc45c9dff5607ba28a5c3d11765d516c991f4c95bc2a2",
+      "pulledAt": "2026-11-01T16:27:34.754Z"
+    },
+    "contracts/test/BountyBoxV2Judge.t.sol": {
+      "hash": "75464400be31c1ed31204e8bba2cd388871e30fae1ab844716c256949d7f1d4f",
+      "pulledAt": "2026-10-30T12:11:33.430Z"
+    },
+    "contracts/test/DeployBountyBoxV2.t.sol": {
+      "hash": "87bc6f0471813fed008931fcb8c8ef0411e08a32c1f4b8b1cea29021b000cbd1",
+      "pulledAt": "2026-11-01T16:27:34.755Z"
+    },
+    "judge/evidence/classify.ts": {
+      "hash": "50825e8514df6710f0ca1db3b038c36bcd7f1fafdd2ba7762bdfa735fe59dbac",
+      "pulledAt": "2026-10-30T12:11:33.431Z"
+    },
+    "judge/evidence/errors.ts": {
+      "hash": "e9f804e524fe8c8c1187139524676fd2b853b9481cccb666cfcaebbe72ace240",
+      "pulledAt": "2026-10-30T12:11:33.431Z"
+    },
+    "judge/evidence/github.ts": {
+      "hash": "85c2f98ba64bf29d2576225acb8076cceef593c928b0cd89e0e836c4ec948d81",
+      "pulledAt": "2026-10-30T12:11:33.431Z"
+    },
+    "judge/evidence/index.ts": {
+      "hash": "92ccfe88c34e3c034ad45ad016ae18cb74d48508f8a7dcebfd2037d6cf05a643",
+      "pulledAt": "2026-10-30T12:11:33.431Z"
+    },
+    "judge/evidence/tx.ts": {
+      "hash": "2927fc06ab72e991d03bc68618b76a455339efae6ecea6d13f2829a6f849fae8",
+      "pulledAt": "2026-10-30T12:11:33.431Z"
+    },
+    "judge/evidence/web.ts": {
+      "hash": "d53d2784bfb4d95be04b252a927021f28d93babe9e7def192810653907d5954f",
+      "pulledAt": "2026-10-30T12:11:33.431Z"
+    },
+    "judge/evidence/x.ts": {
+      "hash": "92c18d24a7b025564a419a3b05f94ec635beae3f7938e33d8f2e299030f72f3b",
+      "pulledAt": "2026-10-30T12:11:33.431Z"
+    },
+    "netlify/functions/judge-api.mts": {
+      "hash": "736b47b291e388da0f2d25b8301aa4d408bb524810e2e6730dd57ca33a14a940",
+      "pulledAt": "2026-10-30T12:11:33.435Z"
+    },
+    "netlify/functions/judge-run-background.mts": {
+      "hash": "44eb4a549189e7b25321b40145cf33ee60a9bcfd656e3114af956793e74653fb",
+      "pulledAt": "2026-10-30T12:11:33.435Z"
+    },
+    "netlify/functions/judge-tick.mts": {
+      "hash": "41525c3a08e17bb9de40ba9e96ce218bc9e20a2a76978a3b18e8c3c2a6fa1435",
+      "pulledAt": "2026-10-30T12:11:33.435Z"
+    },
+    "src/bountybox/actions.ts": {
+      "hash": "4efb3bcea7ea7829cb968e67f1b4d57a85c93fe68faa839e5c09a4efd8ff43ae",
+      "pulledAt": "2026-10-30T12:11:33.435Z"
+    },
+    "src/bountybox/judge.ts": {
+      "hash": "671da73c64b2c385fe31c32db41afe407fec1bd17f5dcf523bf2d201d41b4f65",
+      "pulledAt": "2026-10-31T22:27:06.537Z"
+    },
+    "src/bountybox/receipt.ts": {
+      "hash": "fad8196376de8cd537a06a4de066d780e687e89a30a069625f2c6e0965302ca7",
+      "pulledAt": "2026-10-30T12:11:33.436Z"
+    },
+    "src/bountybox/rpc.ts": {
+      "hash": "60da12f5e03ba62edf0db0a51134b5dbd0b00f60031ed3ad77e1f0656d58a838",
+      "pulledAt": "2026-10-30T12:11:33.436Z"
+    },
+    "src/components/JudgeIdentity.tsx": {
+      "hash": "96fc501cb6be0337367473d3f5aaa864da643e99271de1a873725cf23d7b56bc",
+      "pulledAt": "2026-10-31T22:27:06.540Z"
+    },
+    "contracts/out/BountyBoxV2.Base.t.sol/BountyBoxV2TestBase.json": {
+      "hash": "84d53cc27a5f8549978b2a820c15593d43e46a81b8e13d5ebe510006ad564816",
+      "pulledAt": "2026-11-01T17:24:11.088Z"
+    },
+    "contracts/out/BountyBoxV2.Fuzz.t.sol/BountyBoxV2FuzzTest.json": {
+      "hash": "dd2d0ce2762b6adde1d5aa13e8b1befb735be2db568316b0f00b5d9d8a340c96",
+      "pulledAt": "2026-11-01T17:24:11.089Z"
+    },
+    "contracts/out/BountyBoxV2.Invariant.t.sol/BountyBoxV2Handler.json": {
+      "hash": "ea2b08026f1c8283357ee4cb1caff7bf1b7a016cd499d1a48941ae1272cbb1ce",
+      "pulledAt": "2026-11-01T16:27:34.793Z"
+    },
+    "contracts/out/BountyBoxV2.Invariant.t.sol/BountyBoxV2InvariantTest.json": {
+      "hash": "20109d08608dbcd0798b49beca2a8e46c4927c3027cfc10d9c3f3a31a49375bf",
+      "pulledAt": "2026-11-01T17:24:11.103Z"
+    },
+    "contracts/out/BountyBoxV2.Poster.t.sol/BountyBoxV2PosterTest.json": {
+      "hash": "87ce34e2565389ccbae3c5059dc4475f75cecd7b255620e85b6caea5140c5454",
+      "pulledAt": "2026-11-01T17:24:11.105Z"
+    },
+    "contracts/out/BountyBoxV2.Reentrancy.t.sol/BountyBoxV2ReentrancyTest.json": {
+      "hash": "d0d9db79c3ebfacb7c577a476d950599bea4569d8c220723f3c5e74e1f195a92",
+      "pulledAt": "2026-11-01T17:24:11.105Z"
+    },
+    "contracts/out/BountyBoxV2.Reentrancy.t.sol/V2Attacker.json": {
+      "hash": "a3c350d2476a087d6a9e2222c50e6c148da55a58bf6ddc5464a15b26131e1fe4",
+      "pulledAt": "2026-11-01T17:24:11.105Z"
+    },
+    "contracts/out/BountyBoxV2.sol/BountyBoxV2.json": {
+      "hash": "c076f6bdb7bbf6b5cd10a24a21358c261ee60b834244b4ee9fcc63279543aa97",
+      "pulledAt": "2026-11-01T17:24:11.116Z"
+    },
+    "contracts/out/BountyBoxV2.t.sol/BountyBoxV2Test.json": {
+      "hash": "575b045fdc2720d623758af21154cedd22b43180765baf7dafc82f1e4585bb2f",
+      "pulledAt": "2026-11-01T17:24:11.121Z"
+    },
+    "contracts/out/BountyBoxV2Judge.t.sol/BountyBoxV2JudgeTest.json": {
+      "hash": "57489c3b7805007ca3b19fe3606c195b78158548588ccf5e71eadfa1808c2ead",
+      "pulledAt": "2026-11-01T17:24:11.123Z"
+    },
+    "contracts/out/DeployBountyBoxV2.s.sol/DeployBountyBoxV2.json": {
+      "hash": "90e9ddac0bfe818c3b6417e5e3f47c0a461af408dd09e141941e8f9763f856ac",
+      "pulledAt": "2026-11-01T17:24:11.128Z"
+    },
+    "contracts/out/DeployBountyBoxV2.s.sol/IDecimals.json": {
+      "hash": "9e4081a23aa724fbdb754ff403105db2a186f8838c58f768b41dc85a6f004839",
+      "pulledAt": "2026-11-01T17:24:11.128Z"
+    },
+    "contracts/out/DeployBountyBoxV2.t.sol/DeployBountyBoxV2Test.json": {
+      "hash": "fcd90db5803f3972fc373452afd1dff546d41cf6445673b705aa4a8c5d4a63d1",
+      "pulledAt": "2026-11-01T17:24:11.129Z"
+    },
+    "contracts/out/build-info/2f08b429fdbb0e6b.json": {
+      "hash": "5f77bd7c13223962f9310c1cebccd162ece9109213f85fb46f904ce6b623a521",
+      "pulledAt": "2026-10-30T12:11:33.477Z"
+    },
+    "contracts/out/build-info/58114a2ccd13c1d8.json": {
+      "hash": "4526d90d695c0e4de321de45d9b6b7a541603bf5a32cd0d13923f9709024b854",
+      "pulledAt": "2026-10-30T12:11:33.478Z"
+    },
+    "contracts/out/build-info/9cc17cca643e72ef.json": {
+      "hash": "4dae9d6f36817b5dc2b6b4c7b8bad2f828dbf0bd154ca0cbdab27fcb3f52bf8e",
+      "pulledAt": "2026-10-30T12:11:33.479Z"
+    },
+    "contracts/out/build-info/d5402b30ab5e8850.json": {
+      "hash": "03f5df80b9d3a11f67cd61efe0aef164af18eb02e1fdebf9629828bb2cbfa220",
+      "pulledAt": "2026-10-30T12:11:33.479Z"
+    },
+    "scripts/judge-e2e.ts": {
+      "hash": "bb9061c335437d778bfb431f80bc8eb09feb87fd6285b79ba3ffbe86a1fa1e3c",
+      "pulledAt": "2026-10-31T22:27:06.516Z"
+    },
+    "src/components/CopyButton.tsx": {
+      "hash": "492cd6ca9ed63dc025ab136cda0594105e37b8cf717f84c6e99b0862076a58a8",
+      "pulledAt": "2026-10-31T22:27:06.539Z"
+    },
+    "judge/dedupe.ts": {
+      "hash": "82aef2f59c8796f83c70fcb93bacbece14dc964379397cb468b9efe59af71e11",
+      "pulledAt": "2026-11-01T16:27:34.738Z"
+    },
+    "contracts/test/BountyBoxV2.Hardening.t.sol": {
+      "hash": "c631add9bf58db086eb38e554ee372e2f6377db21a7f0a5135677b36a9a67a90",
+      "pulledAt": "2026-11-01T16:27:34.752Z"
+    },
+    "contracts/test/BountyBoxV2.HardeningCap.t.sol": {
+      "hash": "cee2a035d0d0ab654bb64557da47c86d5317e500e99d080a08de9e6cd3d12301",
+      "pulledAt": "2026-11-01T16:27:34.752Z"
+    },
+    "contracts/test/BountyBoxV2.HardeningInvariant.t.sol": {
+      "hash": "b741d1aa52ba59ec74d564208efab8fd01f272eebf6a20e241c2c78dbc7b203c",
+      "pulledAt": "2026-11-01T17:24:11.056Z"
+    },
+    "contracts/test/BountyBoxV2.HardeningReentrancy.t.sol": {
+      "hash": "d45768b17fe07e99d1ed2f8c42f91db8353b762590fd6a12794fea69a57054cc",
+      "pulledAt": "2026-11-01T16:27:34.753Z"
+    },
+    "src/components/JudgeRetiredBanner.tsx": {
+      "hash": "c9d42f3088af6b5c354b68acdb0d1b297ed6309923366d77e950bc310a5e2a25",
+      "pulledAt": "2026-11-01T16:27:34.766Z"
+    },
+    "contracts/out/BountyBoxV2.Hardening.t.sol/BountyBoxV2HardeningTest.json": {
+      "hash": "90ebfdc8e793a773c90ef3ce071ba991c11981cec9fbe073a434f61317471474",
+      "pulledAt": "2026-11-01T17:24:11.091Z"
+    },
+    "contracts/out/BountyBoxV2.HardeningCap.t.sol/BountyBoxV2HardeningCapTest.json": {
+      "hash": "67308678fd18af430d7abb513f2041d5f0596edc190b86770bf3c47f8bfc2ad1",
+      "pulledAt": "2026-11-01T17:24:11.092Z"
+    },
+    "contracts/out/BountyBoxV2.HardeningInvariant.t.sol/BountyBoxV2HardeningInvariantTest.json": {
+      "hash": "dfccf63034b5b9bbeedb5542f182dc7cbbae406af54998b1d53d8a1618a06e70",
+      "pulledAt": "2026-11-01T17:24:11.095Z"
+    },
+    "contracts/out/BountyBoxV2.HardeningInvariant.t.sol/HardeningHandler.json": {
+      "hash": "8b793e768a5a93015fd08eb93069932b8e6dfaa122a23867dcd4a61e512c670d",
+      "pulledAt": "2026-11-01T16:27:34.788Z"
+    },
+    "contracts/out/BountyBoxV2.HardeningReentrancy.t.sol/BountyBoxV2HardeningReentrancyTest.json": {
+      "hash": "a0dccab6b87b151370a8db2c874efd4ad5726bcdb37fe580cf0b5628f93d3350",
+      "pulledAt": "2026-11-01T17:24:11.100Z"
+    },
+    "contracts/out/BountyBoxV2.HardeningReentrancy.t.sol/RetireReenter.json": {
+      "hash": "d014fad92bf360e3ed5aa79a18f915881f39eee9a74cbd57f3046ef3a0371a8c",
+      "pulledAt": "2026-11-01T17:24:11.101Z"
+    },
+    "contracts/out/BountyBoxV2.sol/BountyBoxV2Errors.json": {
+      "hash": "df03cf9c1a3411dd4ae1a7219d4234de3a4a47c28271e35b47b5524e5a6a8179",
+      "pulledAt": "2026-11-01T17:24:11.118Z"
+    },
+    "contracts/out/build-info/03c0012e71fda628.json": {
+      "hash": "4f2be175f115ffea3ac9d91fc2359cdfe9837656342ef4fbd33b785b4905826b",
+      "pulledAt": "2026-11-01T16:27:34.837Z"
+    },
+    "contracts/out/build-info/788b91f28a34530f.json": {
+      "hash": "2462d1afafb3c7cb8e3ed79190fb282965f7ada9c3c453eebe955a2af1b5bbcf",
+      "pulledAt": "2026-11-01T16:27:34.838Z"
+    },
+    "contracts/out/build-info/b36b0540d2199b73.json": {
+      "hash": "0d219295aa67a683a6dc47fb2dbe945dd7644e3f52b0545221b4e37059b37ec2",
+      "pulledAt": "2026-11-01T16:27:34.838Z"
+    },
+    "contracts/out/build-info/bac7c561edf72d46.json": {
+      "hash": "e11396eb82be354994c593bc78100ccc96cff65807f7fcda111e0411feee0793",
+      "pulledAt": "2026-11-01T16:27:34.838Z"
+    },
+    "contracts/out/build-info/dd53bb7dc8818b2b.json": {
+      "hash": "c7d3bd5086a3ce5d4b2189499d6519d29a13fced486574cb7b3055070dfba43e",
+      "pulledAt": "2026-11-01T16:27:34.838Z"
+    },
+    "contracts/out/build-info/dd6265f9a9dd7f9f.json": {
+      "hash": "b1c7d0b8bdd750250c4fb7b43f65f6676cd494a06e76b3890383936ba1d7614e",
+      "pulledAt": "2026-11-01T16:27:34.839Z"
+    },
+    "cache/test-failures": {
+      "hash": "ee825b844a973983de0c8d0690174c9b35713a4c96451fb794d01a358c8afe60",
+      "pulledAt": "2026-11-01T17:24:11.039Z"
+    },
+    "contracts/test-helpers/ConfigurableUSDC.sol": {
+      "hash": "5b7257278d34072032b874311c34f9b5ed1f9d38638b3441c7ce533aa119e903",
+      "pulledAt": "2026-11-01T17:24:11.055Z"
+    },
+    "contracts/test/BountyBoxV2.ReviewBase.t.sol": {
+      "hash": "75c9e2bd439e28ce0ae990ad54bc52b18ed5dde8fef71ec6059803b072057985",
+      "pulledAt": "2026-11-01T17:24:11.058Z"
+    },
+    "contracts/test/BountyBoxV2.ReviewBlocklist.t.sol": {
+      "hash": "4ab0958cb8f0a2d1652e379bf6af48a577752991052dc48ce00291da96ad2382",
+      "pulledAt": "2026-11-01T17:24:11.058Z"
+    },
+    "contracts/test/BountyBoxV2.ReviewDonations.t.sol": {
+      "hash": "148a58927100898cb83a4d6484d7f92711324c1757a65cfaa85cfff82648d01b",
+      "pulledAt": "2026-11-01T17:24:11.058Z"
+    },
+    "contracts/test/BountyBoxV2.ReviewHandler.t.sol": {
+      "hash": "ec0fe820dc83543b431fe7c248090aa8607a69df8f40cabafd296e3c98e7a952",
+      "pulledAt": "2026-11-01T17:24:11.058Z"
+    },
+    "contracts/test/BountyBoxV2.ReviewInvariantBase.t.sol": {
+      "hash": "fef08bef80fefa6a6f7806ecb2236665d821f384c3bf15bf3c7f1333823dc15c",
+      "pulledAt": "2026-11-01T17:24:11.058Z"
+    },
+    "contracts/test/BountyBoxV2.ReviewJudge.t.sol": {
+      "hash": "2fab5cc882b0deafa63fc779d0ac52e95aca541432ce5f5a38ffda7b517b1f3f",
+      "pulledAt": "2026-11-01T17:24:11.059Z"
+    },
+    "contracts/test/BountyBoxV2.ReviewPagination.t.sol": {
+      "hash": "48bd8cd7890c73f90025e8d728ce1bbec63750cd25d60aaf9786547e6292657c",
+      "pulledAt": "2026-11-01T17:24:11.059Z"
+    },
+    "contracts/test/BountyBoxV2.ReviewSpam.t.sol": {
+      "hash": "5d2f2d4d75d094dbada501196984753544f44fd1f78007857ba022db91f75b43",
+      "pulledAt": "2026-11-01T17:24:11.059Z"
+    },
+    "contracts/test/BountyBoxV2.ReviewTransferFrom.t.sol": {
+      "hash": "48dc23ebf25c50f63396cc87d97b3d1a3936b52c9fbf3a31e1a81c25f0a4d0cf",
+      "pulledAt": "2026-11-01T17:24:11.059Z"
+    },
+    "contracts/out/BountyBoxV2.Invariant.t.sol/BountyBoxV2GuardianBiasInvariantTest.json": {
+      "hash": "2e1df6c91eb867af3c2f4c3308cc90a3ed67836fa24a47766d20123547c8f99d",
+      "pulledAt": "2026-11-01T17:24:11.101Z"
+    },
+    "contracts/out/BountyBoxV2.ReviewBase.t.sol/ReviewBase.json": {
+      "hash": "4c3d861d32459204132a21bbf7c03874aedef47f61a525a2f3e85e00eb70e403",
+      "pulledAt": "2026-11-01T17:24:11.107Z"
+    },
+    "contracts/out/BountyBoxV2.ReviewBlocklist.t.sol/ReviewBlocklistTest.json": {
+      "hash": "e9eb9b3743d5768415b5eb3c156e607bdc383427cbce4fc709ae0b21245a6bc2",
+      "pulledAt": "2026-11-01T17:24:11.107Z"
+    },
+    "contracts/out/BountyBoxV2.ReviewDonations.t.sol/ReviewDonationsTest.json": {
+      "hash": "a31c664411ef388d74ca482bfc2542164e1ca3eebb58d16f921112ce2c137b56",
+      "pulledAt": "2026-11-01T17:24:11.107Z"
+    },
+    "contracts/out/BountyBoxV2.ReviewHandler.t.sol/ReviewInvariantHandler.json": {
+      "hash": "326f47c7361ba0085cb1863c3dc0f490ac465d149a2b0513a62874c6bb70dfe7",
+      "pulledAt": "2026-11-01T17:24:11.108Z"
+    },
+    "contracts/out/BountyBoxV2.ReviewInvariantBase.t.sol/ReviewInvariantBase.json": {
+      "hash": "f8e2e032c169be3ac82454dee2aefa6d43542903710e68b0cb951e18dc63f923",
+      "pulledAt": "2026-11-01T17:24:11.108Z"
+    },
+    "contracts/out/BountyBoxV2.ReviewJudge.t.sol/ReviewJudgeTest.json": {
+      "hash": "a77c82c92574e32cfa43127c8e8cc59c04cb132957c408ecda2fdbcdf213d8a1",
+      "pulledAt": "2026-11-01T17:24:11.108Z"
+    },
+    "contracts/out/BountyBoxV2.ReviewPagination.t.sol/ReviewPaginationTest.json": {
+      "hash": "d46d955f2ae85c4387e3ca3c09bdaf4c5d58096b041e88a90b72df3f55d6fe7f",
+      "pulledAt": "2026-11-01T17:24:11.108Z"
+    },
+    "contracts/out/BountyBoxV2.ReviewSpam.t.sol/ReviewSpamTest.json": {
+      "hash": "c7c54f1f3b56d2afb0e6d697fa1ea36e89f106ab6c3616214f25685877d6ebf4",
+      "pulledAt": "2026-11-01T17:24:11.109Z"
+    },
+    "contracts/out/BountyBoxV2.ReviewTransferFrom.t.sol/ReviewTransferFromTest.json": {
+      "hash": "a4fed9d1c55f95cfc0cc2f575ced035e02f60fc1621ac7a2a06585f5825055bb",
+      "pulledAt": "2026-11-01T17:24:11.109Z"
+    },
+    "contracts/out/ConfigurableUSDC.sol/ConfigurableUSDC.json": {
+      "hash": "35cf1906fee04e2b6acc970e715a6a4fa4d2d6895c3096436a20751a59e8cb85",
+      "pulledAt": "2026-11-01T17:24:11.123Z"
+    },
+    "contracts/out/build-info/4ae04efe627e1331.json": {
+      "hash": "269de09b36272c39adf84e118540deb5c30d2da6d6b832dce3812d56eb0d275a",
+      "pulledAt": "2026-11-01T17:24:11.151Z"
+    },
+    "contracts/out/build-info/4fa7e8fc5ab07d2f.json": {
+      "hash": "1cc02d9ae3e981deea545d2176381cdf258f919f29d8b047445e514f305597e8",
+      "pulledAt": "2026-11-01T17:24:11.151Z"
+    },
+    "contracts/out/build-info/c0ac90d66141f9a1.json": {
+      "hash": "d986bb435f7fade8edcbe906215a60c41b1cfb58ef8b8dd35099bddaffa675b1",
+      "pulledAt": "2026-11-01T17:24:11.151Z"
+    },
+    "contracts/out/build-info/cfb8b2234d2ca140.json": {
+      "hash": "1611f09c2b9a4523d29120d9344c67253401b14351103c6f5cac35c80971ae73",
+      "pulledAt": "2026-11-01T17:24:11.151Z"
+    },
+    "contracts/out/build-info/e4cf9ce20a6bc4f0.json": {
+      "hash": "4269dbe615c81e6507b22b4a09788778de0fd619d5872bf65fb911ca1407eefa",
+      "pulledAt": "2026-11-01T17:24:11.153Z"
+    }
+  }
+}

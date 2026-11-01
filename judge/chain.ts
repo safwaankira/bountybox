@@ -1,0 +1,82 @@
+import { createPublicClient, type Address, type Hex, type PublicClient } from 'viem'
+import { bountyBoxAbi, GRACE_PERIOD_SECONDS, JudgeMode } from '../src/bountybox/abi'
+import { resilientTransport } from '../src/bountybox/rpc'
+import type { JudgeConfig } from './config'
+import type { BountyView, ClaimView } from './types'
+
+export interface ChainReader {
+  contract: Address
+  chainId: number
+  bountyCount(): Promise<number>
+  aiJudge(): Promise<Address>
+  /** True once the contract's guardian has permanently retired the judge (judgeAccept then always reverts). */
+  judgeRetired(): Promise<boolean>
+  getBounty(id: bigint): Promise<BountyView>
+  getClaims(id: bigint): Promise<ClaimView[]>
+  /** True once the bounty is closed onchain (paid). */
+  isClosed(id: bigint): Promise<boolean>
+  getVerdictHash(id: bigint): Promise<Hex>
+}
+
+export function createChainReader(config: JudgeConfig): ChainReader {
+  const client: PublicClient = createPublicClient({ chain: config.chain, transport: resilientTransport(config.chain) })
+  const address = config.contract
+
+  return {
+    contract: address,
+    chainId: config.chain.id,
+    async bountyCount() {
+      return Number(await client.readContract({ address, abi: bountyBoxAbi, functionName: 'bountyCount' }))
+    },
+    async judgeRetired() {
+      try {
+        return await client.readContract({ address, abi: bountyBoxAbi, functionName: 'judgeRetired' })
+      } catch {
+        // Contracts deployed before the guardian was added have no such function: they cannot be retired.
+        return false
+      }
+    },
+    async aiJudge() {
+      return client.readContract({ address, abi: bountyBoxAbi, functionName: 'aiJudge' })
+    },
+    async getBounty(id) {
+      const b = await client.readContract({ address, abi: bountyBoxAbi, functionName: 'getBounty', args: [id] })
+      const claimCount = Number(b.claimCount)
+      const expiry = Number(b.expiry)
+      return {
+        id: b.id,
+        poster: b.poster,
+        title: b.title,
+        description: b.description,
+        criteria: b.criteria,
+        expiry,
+        createdAt: Number(b.createdAt),
+        status: b.status === 1 ? 'paid' : b.status === 2 ? 'refunded' : 'open',
+        hasAccepted: b.hasAccepted,
+        aiMode: b.judgeMode === JudgeMode.AI,
+        requireHandle: b.requireHandle,
+        claimCount,
+        settlementTime: claimCount > 0 ? expiry + GRACE_PERIOD_SECONDS : expiry,
+      }
+    },
+    async getClaims(id) {
+      const claims = await client.readContract({ address, abi: bountyBoxAbi, functionName: 'getClaims', args: [id] })
+      return claims.map((c, index) => ({
+        id: index,
+        hunter: c.hunter,
+        proofURL: c.proofURL,
+        note: c.note,
+        handle: c.handle,
+        timestamp: Number(c.timestamp),
+      }))
+    },
+    async isClosed(id) {
+      const b = await client.readContract({ address, abi: bountyBoxAbi, functionName: 'getBounty', args: [id] })
+      return b.status !== 0 || b.hasAccepted
+    },
+    async getVerdictHash(id) {
+      const [hash] = await client.readContract({ address, abi: bountyBoxAbi, functionName: 'getVerdict', args: [id] })
+      return hash
+    },
+  }
+}

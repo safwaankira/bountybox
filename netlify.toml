@@ -1,0 +1,13 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+
+# Functions with a custom path are matched before this rule, so /verdicts/* and /evidence/* reach the API.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
