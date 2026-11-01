@@ -5,6 +5,7 @@ import { AmountField } from '@/components/AmountField'
 import { GateButton } from '@/components/GateButton'
 import { JudgeIdentity } from '@/components/JudgeIdentity'
 import { JudgeRetiredBanner } from '@/components/JudgeRetiredBanner'
+import { SafetyNotes } from '@/components/SafetyNotes'
 import { TxStatus } from '@/components/TxStatus'
 import { GRACE_PERIOD_SECONDS, LIMITS, MAX_DURATION_SECONDS, MIN_AMOUNT_RAW } from '@/bountybox/abi'
 import { useJudgeLimits, useNow, useUsdcAccount } from '@/bountybox/data'
@@ -282,6 +283,8 @@ export function Create() {
         )}
 
         <div>
+          <SafetyNotes ai={aiMode} />
+
           <GateButton
             label={needsAllowance ? 'Allow USDC and create bounty' : 'Create bounty'}
             busyLabel={flow.state.phase === 'wallet' ? 'Confirm in wallet…' : 'Confirming…'}

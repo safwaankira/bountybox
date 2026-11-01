@@ -7,6 +7,7 @@ import { StateTag } from '@/components/BountyCard'
 import { ClaimsList } from '@/components/ClaimsList'
 import { AiBadge, JudgeIdentity } from '@/components/JudgeIdentity'
 import { JudgeRetiredBanner } from '@/components/JudgeRetiredBanner'
+import { SafetyNotes } from '@/components/SafetyNotes'
 import { Contributors } from '@/components/Contributors'
 import { RefundPanel } from '@/components/RefundPanel'
 import { SubmitClaim } from '@/components/SubmitClaim'
@@ -16,6 +17,7 @@ import { CHAIN_ID } from '@/bountybox/config'
 import { bountyState, refundOpensAt, useBountyDetail, useJudgedInfo, useJudgeLimits, useMyContribution, useNow, usePayoutTx } from '@/bountybox/data'
 import { fmtDate, fmtUsdc, timeLeft } from '@/bountybox/format'
 import { AddressText } from '@/components/CopyButton'
+import { usePagedClaims, usePagedContributors } from '@/bountybox/paging'
 import { useClaimStatuses } from '@/bountybox/judge'
 import { useTxHistory } from '@/bountybox/tx'
 
@@ -34,11 +36,17 @@ function AddressLink({ address, label = 'address' }: { address: string; label?: 
 export function BountyPage({ id }: { id: bigint }) {
   const now = useNow(1000)
   const { address } = useAccount()
-  const { bounty, claims, contributors, isLoading, notFound } = useBountyDetail(id)
+  const { bounty, isLoading, notFound } = useBountyDetail(id)
+  const claimPages = usePagedClaims(id)
+  const contributorPages = usePagedContributors(id)
   const myShare = useMyContribution(id)
   const history = useTxHistory(id.toString())
   const payoutTx = usePayoutTx(id, Boolean(bounty?.hasAccepted))
-  const { statuses, unreachable } = useClaimStatuses(id, Boolean(bounty?.aiMode))
+  const { statuses, unreachable } = useClaimStatuses(
+    id,
+    Boolean(bounty?.aiMode),
+    claimPages.items.map((c) => c.id),
+  )
   const judged = useJudgedInfo(bounty)
   const limits = useJudgeLimits()
 
@@ -202,8 +210,27 @@ export function BountyPage({ id }: { id: bigint }) {
         </section>
       )}
 
-      <ClaimsList bounty={bounty} claims={claims} acceptable={isOpen || inGrace} statuses={statuses} judgeUnreachable={unreachable} judged={judged} />
-      <Contributors contributors={contributors} total={state === 'paid' ? bounty.paidAmount : bounty.pot} poster={bounty.poster} />
+      <ClaimsList
+        bounty={bounty}
+        claims={claimPages.items}
+        total={claimPages.total}
+        hasMore={claimPages.hasMore}
+        loadingMore={claimPages.isLoadingMore}
+        onLoadMore={claimPages.loadMore}
+        acceptable={isOpen || inGrace}
+        statuses={statuses}
+        judgeUnreachable={unreachable}
+        judged={judged}
+      />
+      <Contributors
+        contributors={contributorPages.items}
+        count={bounty.contributorCount}
+        hasMore={contributorPages.hasMore}
+        loadingMore={contributorPages.isLoadingMore}
+        onLoadMore={contributorPages.loadMore}
+        total={state === 'paid' ? bounty.paidAmount : bounty.pot}
+        poster={bounty.poster}
+      />
 
       {history.length > 0 && (
         <section className="card p-5">
@@ -218,6 +245,8 @@ export function BountyPage({ id }: { id: bigint }) {
           </ul>
         </section>
       )}
+
+      <SafetyNotes ai={bounty.aiMode} />
     </div>
   )
 }

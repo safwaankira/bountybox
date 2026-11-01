@@ -1,4 +1,4 @@
-import { useQuery } from '@tanstack/react-query'
+import { useQueries, useQuery } from '@tanstack/react-query'
 import { useReadContracts } from 'wagmi'
 import { parseAbi, type Address, type Hex } from 'viem'
 import { CHAIN_ID } from './config'
@@ -87,22 +87,38 @@ export function useVerdictDoc(bountyId: bigint, claimId: number, enabled: boolea
   })
 }
 
-export function useClaimStatuses(bountyId: bigint, enabled: boolean) {
-  const query = useQuery({
-    queryKey: ['judge-statuses', CHAIN_ID, bountyId.toString()],
-    enabled,
-    refetchInterval: 15_000,
-    retry: false,
-    queryFn: async (): Promise<Record<string, JudgeClaimStatus>> => {
-      const res = await fetch(`${JUDGE_BASE_URL}/verdicts/${CHAIN_ID}/${bountyId}/index.json`, { headers: { accept: 'application/json' } })
-      // 404 just means the judge has not looked at this bounty yet.
-      if (res.status === 404) return {}
-      if (!res.ok) throw new Error(`Judge service returned HTTP ${res.status}`)
-      const body: unknown = await res.json()
-      return typeof body === 'object' && body !== null ? (body as Record<string, JudgeClaimStatus>) : {}
-    },
+function isFinalState(state: JudgeClaimState | undefined): boolean {
+  return state === 'accepted' || state === 'rejected' || state === 'closed'
+}
+
+/**
+ * Judge status for the claims currently on screen, one small request per claim. (Fetching a single index of every
+ * claim would grow without bound on a bounty that attracts spam.) Claims with a final decision are never refetched.
+ */
+export function useClaimStatuses(bountyId: bigint, enabled: boolean, claimIds: number[]) {
+  const queries = useQueries({
+    queries: claimIds.map((claimId) => ({
+      queryKey: ['judge-status', CHAIN_ID, bountyId.toString(), claimId],
+      enabled,
+      retry: false,
+      staleTime: 5_000,
+      refetchInterval: (query: { state: { data: JudgeClaimStatus | null | undefined } }) => (isFinalState(query.state.data?.state) ? false : 15_000),
+      queryFn: async (): Promise<JudgeClaimStatus | null> => {
+        const res = await fetch(`${JUDGE_BASE_URL}/verdicts/${CHAIN_ID}/${bountyId}/${claimId}/status.json`, { headers: { accept: 'application/json' } })
+        // 404 just means the judge has not looked at this claim yet.
+        if (res.status === 404) return null
+        if (!res.ok) throw new Error(`Judge service returned HTTP ${res.status}`)
+        const body: unknown = await res.json()
+        return typeof body === 'object' && body !== null ? (body as JudgeClaimStatus) : null
+      },
+    })),
   })
-  return { statuses: query.data ?? {}, unreachable: query.isError }
+  const statuses: Record<string, JudgeClaimStatus> = {}
+  claimIds.forEach((claimId, i) => {
+    const data = queries[i]?.data
+    if (data) statuses[String(claimId)] = data
+  })
+  return { statuses, unreachable: queries.length > 0 && queries.every((q) => q.isError) }
 }
 
 /* ------------------------- ERC-8004 judge identity ------------------------- */

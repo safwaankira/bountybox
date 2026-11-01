@@ -17,6 +17,7 @@ import { assertPublicUrl, isBlockedIp } from '../judge/safeFetch'
 import { idempotencyKeyFor, type JudgeSigner } from '../judge/signer'
 import { FsStore } from '../judge/store'
 import type { BountyView, ClaimView, Evidence, ModelVerdict, Store } from '../judge/types'
+import { readCursor } from '../judge/cursor'
 import { readStatus, verdictKey } from '../judge/verdict'
 import { mkdtemp } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
@@ -144,7 +145,14 @@ class FakeChain implements ChainReader {
   async judgeRetired() { return this.retired }
   async aiJudge() { return JUDGE }
   async getBounty(id: bigint) { return structuredClone({ ...this.bounties.get(id.toString())!, id }) }
-  async getClaims(id: bigint) { return structuredClone(this.claims.get(id.toString()) ?? []) }
+  pageCalls: Array<{ offset: number; limit: number }> = []
+  async getClaimsPage(id: bigint, offset: number, limit: number) {
+    this.pageCalls.push({ offset, limit })
+    const all = this.claims.get(id.toString()) ?? []
+    // Same rules as the contract: at most 100 per page, empty when out of range.
+    const n = Math.max(0, Math.min(limit, 100, all.length - offset))
+    return { claims: structuredClone(all.slice(offset, offset + n)), total: all.length }
+  }
   async isClosed(id: bigint) { return this.bounties.get(id.toString())!.status !== 'open' }
   async getVerdictHash() { return this.verdictHash as `0x${string}` }
 }
@@ -153,7 +161,7 @@ function scorer(provider: ModelVerdict['provider'], approved: boolean, confidenc
   return { provider, model: 'fake', async score() { counter.n++; return { provider, model: 'fake', approved, confidence, reasons: [approved ? 'meets criteria' : 'does not meet criteria'] } } }
 }
 
-async function harness(options: { claims?: ClaimView[]; checksFail?: boolean; scorers?: ModelScorer[]; signerAddress?: Address; baseIsLocal?: boolean }) {
+async function harness(options: { scan?: { pageSize: number; perBounty: number; perTick: number; maxWork: number }; transient?: Set<number>; claims?: ClaimView[]; checksFail?: boolean; scorers?: ModelScorer[]; signerAddress?: Address; baseIsLocal?: boolean }) {
   const chain = new FakeChain()
   chain.bounties.set('1', bounty())
   chain.claims.set('1', options.claims ?? [claim()])
@@ -177,15 +185,26 @@ async function harness(options: { claims?: ClaimView[]; checksFail?: boolean; sc
     blobs: [],
   })
   let clock = NOW
+  const built: number[] = []
+  const tried = new Set<number>()
   const deps: JudgeDeps = {
-    config: { baseURL: options.baseIsLocal ? 'http://localhost:3001' : 'https://judge.test', baseIsLocal: Boolean(options.baseIsLocal), maxClaimsPerTick: 10, tickBudgetMs: 60_000, githubToken: null, xBearerToken: null },
+    config: {
+      baseURL: options.baseIsLocal ? 'http://localhost:3001' : 'https://judge.test', baseIsLocal: Boolean(options.baseIsLocal),
+      maxClaimsPerTick: options.scan?.maxWork ?? 10, claimPageSize: options.scan?.pageSize, maxScanPerBounty: options.scan?.perBounty, maxScanPerTick: options.scan?.perTick, tickBudgetMs: 60_000, githubToken: null, xBearerToken: null },
     store, chain, signer,
     scorers: options.scorers ?? [],
-    evidenceBuilder: async () => bundle(),
+    evidenceBuilder: async ({ claim: c }) => {
+      built.push(c.id)
+      if (options.transient?.has(c.id) && !tried.has(c.id)) {
+        tried.add(c.id)
+        throw new TransientError('simulated network failure')
+      }
+      return bundle()
+    },
     nowSeconds: () => clock,
     log: () => undefined,
   }
-  return { deps, chain, store, sent, advance: (s: number) => { clock += s } }
+  return { deps, chain, store, sent, built, advance: (s: number) => { clock += s } }
 }
 
 {
@@ -325,6 +344,93 @@ async function harness(options: { claims?: ClaimView[]; checksFail?: boolean; sc
   const h = await harness({ claims, scorers: [scorer('openai', true, 0.95, calls), scorer('gemini', true, 0.95, calls)] })
   await runJudgeTick(h.deps)
   check('earliest claim is paid, the copy is not', h.sent.length === 1 && h.sent[0]?.claimId === 0)
+}
+
+/* ------------------------- bounded, resumable claim scans ------------------------- */
+const manyClaims = (n: number, urlOf: (i: number) => string = (i) => `https://example.com/p/${i}`): ClaimView[] =>
+  Array.from({ length: n }, (_, i) => claim({ id: i, hunter: `0x${(i + 1).toString(16).padStart(40, '0')}`, proofURL: urlOf(i) }))
+const noModels = (): ModelScorer[] => [scorer('openai', false, 0.9, { n: 0 }), scorer('gemini', false, 0.9, { n: 0 })]
+
+{
+  // 250 spam claims: every tick does a bounded amount of work, and every claim is judged exactly once.
+  const h = await harness({ claims: manyClaims(250), checksFail: true, scorers: noModels(), scan: { pageSize: 10, perBounty: 40, perTick: 100, maxWork: 30 } })
+  let ticks = 0
+  let maxBuiltPerTick = 0
+  let maxLimit = 0
+  let maxPagesPerTick = 0
+  for (; ticks < 40; ticks++) {
+    const before = h.built.length
+    h.chain.pageCalls.length = 0
+    await runJudgeTick(h.deps)
+    maxBuiltPerTick = Math.max(maxBuiltPerTick, h.built.length - before)
+    maxPagesPerTick = Math.max(maxPagesPerTick, h.chain.pageCalls.length)
+    for (const c of h.chain.pageCalls) maxLimit = Math.max(maxLimit, c.limit)
+    if (h.built.length - before === 0) break
+  }
+  const unique = new Set(h.built)
+  check('spam: every claim is judged exactly once across ticks', h.built.length === 250 && unique.size === 250, `built=${h.built.length} unique=${unique.size}`)
+  check('spam: evaluations per tick never exceed the work budget', maxBuiltPerTick <= 30 && ticks > 1, `max=${maxBuiltPerTick} ticks=${ticks}`)
+  check('spam: chain reads are small pages, never the whole list', maxLimit <= 10 && maxPagesPerTick <= 6, `limit=${maxLimit} pages=${maxPagesPerTick}`)
+  const cursor = await readCursor(h.store, 5042002, 1n)
+  check('spam: the settled prefix advances to the end', cursor.settled === 250, JSON.stringify(cursor))
+  h.chain.pageCalls.length = 0
+  const before = h.built.length
+  await runJudgeTick(h.deps)
+  check('spam: a finished bounty costs no chain reads and no evaluations', h.chain.pageCalls.length === 0 && h.built.length === before)
+}
+{
+  // Resume after a partial tick: the second tick continues at claim 5, never re-reading or re-judging 0-4.
+  const h = await harness({ claims: manyClaims(20), checksFail: true, scorers: noModels(), scan: { pageSize: 5, perBounty: 100, perTick: 100, maxWork: 5 } })
+  const first = await runJudgeTick(h.deps)
+  check('resume: the first tick stops at the work budget', JSON.stringify(h.built) === JSON.stringify([0, 1, 2, 3, 4]) && first.skipped !== undefined, JSON.stringify({ built: h.built, first }))
+  const cursor = await readCursor(h.store, 5042002, 1n)
+  check('resume: the cursor was persisted', cursor.next === 5 && cursor.settled === 5, JSON.stringify(cursor))
+  h.chain.pageCalls.length = 0
+  await runJudgeTick(h.deps)
+  check('resume: the second tick starts reading at offset 5', h.chain.pageCalls[0]?.offset === 5, JSON.stringify(h.chain.pageCalls))
+  check('resume: no claim is judged twice', JSON.stringify(h.built) === JSON.stringify([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]), JSON.stringify(h.built))
+  for (let i = 0; i < 6; i++) await runJudgeTick(h.deps)
+  check('resume: all 20 claims judged exactly once in the end', h.built.length === 20 && new Set(h.built).size === 20, JSON.stringify(h.built))
+}
+{
+  // A claim stuck in a retry does not block the claims after it, and is retried alone once its backoff passes.
+  const h = await harness({ claims: manyClaims(12), checksFail: true, transient: new Set([3]), scorers: noModels(), scan: { pageSize: 4, perBounty: 100, perTick: 100, maxWork: 100 } })
+  const first = await runJudgeTick(h.deps)
+  check('stuck claim: the other 11 claims are judged in the same tick', first.retrying === 1 && h.built.length === 12 && first.rejected === 11, JSON.stringify({ first, built: h.built }))
+  const built = h.built.length
+  await runJudgeTick(h.deps)
+  check('stuck claim: nothing is retried before its backoff passes', h.built.length === built)
+  h.advance(120)
+  h.chain.pageCalls.length = 0
+  await runJudgeTick(h.deps)
+  check('stuck claim: only claim 3 is judged again', h.built.length === built + 1 && h.built[h.built.length - 1] === 3, JSON.stringify(h.built))
+  check('stuck claim: the retry scan starts at the first unsettled claim, not at 0', h.chain.pageCalls[0]?.offset === 3, JSON.stringify(h.chain.pageCalls))
+  check('stuck claim: it was rejected on the retry', (await readStatus(h.store, 5042002, 1n, 3))?.state === 'rejected')
+}
+{
+  // Duplicate detection survives paging and resuming: claim 110 copies claim 0 across ticks and pages.
+  const claims = manyClaims(120, (i) => (i === 0 ? 'https://example.com/shared' : i === 110 ? 'http://www.example.com/shared/?utm_source=x' : `https://example.com/p/${i}`))
+  const h = await harness({ claims, checksFail: true, scorers: noModels(), scan: { pageSize: 25, perBounty: 30, perTick: 100, maxWork: 30 } })
+  for (let i = 0; i < 12; i++) await runJudgeTick(h.deps)
+  const dup = await readStatus(h.store, 5042002, 1n, 110)
+  check('paged duplicates: claim 110 is rejected as a duplicate of claim #0', dup?.state === 'rejected' && Boolean(dup.reasons?.[0]?.includes('Duplicate of claim #0')), JSON.stringify(dup?.reasons))
+  check('paged duplicates: the duplicate was never evaluated', !h.built.includes(110) && h.built.length === 119, `built=${h.built.length}`)
+}
+{
+  // Closing out a finished bounty with many claims is bounded per tick and only completes when every claim is closed.
+  const h = await harness({ claims: manyClaims(250), checksFail: true, scorers: noModels(), scan: { pageSize: 10, perBounty: 40, perTick: 100, maxWork: 0 } })
+  h.advance(30 * 86_400)
+  const closedSet = async () => JSON.parse((await h.store.getText('closed/5042002.json')) ?? '[]') as string[]
+  await runJudgeTick(h.deps)
+  let written = 0
+  for (let i = 0; i < 250; i++) if ((await readStatus(h.store, 5042002, 1n, i))?.state === 'closed') written++
+  check('close-out: a tick closes at most the per-bounty budget', written === 40, `closed=${written}`)
+  check('close-out: the bounty is not marked done while claims remain', !(await closedSet()).includes('1'))
+  for (let i = 0; i < 10; i++) await runJudgeTick(h.deps)
+  let all = 0
+  for (let i = 0; i < 250; i++) if ((await readStatus(h.store, 5042002, 1n, i))?.state === 'closed') all++
+  check('close-out: eventually every claim is closed and the bounty is done', all === 250 && (await closedSet()).includes('1'), `closed=${all}`)
+  check('close-out: nothing was evaluated or paid', h.built.length === 0 && h.sent.length === 0)
 }
 
 console.log(failed === 0 ? '\nall checks passed' : `\n${failed} check(s) failed`)

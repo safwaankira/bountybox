@@ -21,6 +21,11 @@ export interface JudgeConfig {
   xBearerToken: string | null
   circle: { apiKey: string; entitySecret: string; walletId: string } | null
   maxClaimsPerTick: number
+  /** Claims read per chain call (the contract caps pages at 100). */
+  claimPageSize: number
+  /** Claims visited per bounty per tick, and across all bounties per tick. Bounds work however much spam a bounty has. */
+  maxScanPerBounty: number
+  maxScanPerTick: number
   /** Stop starting new work after this many ms (background functions last 15 minutes). */
   tickBudgetMs: number
 }
@@ -111,6 +116,9 @@ export function loadConfig(env: Env = process.env): JudgeConfig {
     xBearerToken: clean(env.X_BEARER_TOKEN),
     circle: circleKey && entitySecret && walletId ? { apiKey: circleKey, entitySecret, walletId } : null,
     maxClaimsPerTick: Number(clean(env.JUDGE_MAX_CLAIMS_PER_TICK) ?? '6'),
+    claimPageSize: Math.min(100, Math.max(1, Number(clean(env.JUDGE_CLAIM_PAGE_SIZE) ?? '25'))),
+    maxScanPerBounty: Math.max(1, Number(clean(env.JUDGE_MAX_SCAN_PER_BOUNTY) ?? '100')),
+    maxScanPerTick: Math.max(1, Number(clean(env.JUDGE_MAX_SCAN_PER_TICK) ?? '300')),
     tickBudgetMs: Number(clean(env.JUDGE_TICK_BUDGET_MS) ?? String(12 * 60_000)),
   }
 }

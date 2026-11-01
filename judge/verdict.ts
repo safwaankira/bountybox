@@ -4,6 +4,9 @@ import type { EvidenceBlob } from './evidence'
 import type { BountyView, Check, ClaimStatus, ClaimView, Evidence, ModelVerdict, Store } from './types'
 
 /** Public URL layout. Netlify redirects /verdicts/* and /evidence/* to the API function. */
+/** Claims with an id below this are also kept in the per-bounty status index. */
+export const INDEX_MAX_CLAIMS = 100
+
 export function verdictKey(chainId: number, bountyId: bigint, claimId: number): string {
   return `verdicts/${chainId}/${bountyId}/${claimId}.json`
 }
@@ -131,6 +134,9 @@ export async function readStatus(store: Store, chainId: number, bountyId: bigint
 
 export async function writeStatus(store: Store, chainId: number, bountyId: bigint, claimId: number, status: ClaimStatus): Promise<void> {
   await store.setText(statusKey(chainId, bountyId, claimId), JSON.stringify(status), 'application/json')
+  // The aggregate index is a convenience for small bounties. Past this many claims it would be rewritten in full on
+  // every status change (quadratic work under claim spam), so larger bounties are read per claim instead.
+  if (claimId >= INDEX_MAX_CLAIMS) return
   const index = await readIndex(store, chainId, bountyId)
   index[String(claimId)] = status
   await store.setText(indexKey(chainId, bountyId), JSON.stringify(index), 'application/json')

@@ -11,3 +11,7 @@ broadcast/*/*/dry-run/
 .netlify/
 .judge-data/
 codex-review.md
+cache/
+out/
+broadcast/DeployBountyBox.s.sol/5042/run-latest.recovery.lock
+broadcast/DeployBountyBoxV2.s.sol/5042002/run-latest.recovery.lock

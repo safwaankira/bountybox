@@ -9,6 +9,7 @@ import { useBountyActions } from '@/bountybox/actions'
 import { CHAIN_ID } from '@/bountybox/config'
 import { evidencePath, isLocalUrl, safeHref, useVerdictDoc, verdictPath, type JudgeClaimStatus } from '@/bountybox/judge'
 import { CopyButton, AddressText } from '@/components/CopyButton'
+import { LoadMore } from '@/components/LoadMore'
 import { buildTxExplorerUrl } from '@/onchain-facts'
 
 interface ClaimsListProps {
@@ -20,6 +21,11 @@ interface ClaimsListProps {
   judgeUnreachable?: boolean
   /** Onchain proof of the judge's approval, for AI bounties that have paid out. */
   judged?: JudgedInfo
+  /** Paging: claims are loaded a page at a time. */
+  total: number
+  hasMore: boolean
+  loadingMore: boolean
+  onLoadMore: () => void
 }
 
 function JudgeStatus({
@@ -151,7 +157,7 @@ function JudgeStatus({
   )
 }
 
-export function ClaimsList({ bounty, claims, acceptable, statuses = {}, judgeUnreachable = false, judged }: ClaimsListProps) {
+export function ClaimsList({ bounty, claims, acceptable, statuses = {}, judgeUnreachable = false, judged, total, hasMore, loadingMore, onLoadMore }: ClaimsListProps) {
   const { address } = useAccount()
   const { flow, acceptClaim } = useBountyActions()
   const [armed, setArmed] = useState<number | null>(null)
@@ -165,7 +171,7 @@ export function ClaimsList({ bounty, claims, acceptable, statuses = {}, judgeUnr
   return (
     <section className="card p-5">
       <h2 className="display text-xl font-semibold">
-        Claims <span className="tabular-nums" style={{ color: 'var(--subtle)' }}>{claims.length}</span>
+        Claims <span className="tabular-nums" style={{ color: 'var(--subtle)' }}>{Math.max(total, bounty.claimCount)}</span>
       </h2>
 
       {claims.length === 0 ? (
@@ -262,6 +268,7 @@ export function ClaimsList({ bounty, claims, acceptable, statuses = {}, judgeUnr
           })}
         </ul>
       )}
+      <LoadMore shown={claims.length} total={Math.max(total, bounty.claimCount)} hasMore={hasMore} loading={loadingMore} onLoadMore={onLoadMore} noun="claims" />
 
       {bounty.aiMode && claims.length > 0 && (
         <p className="mt-3 text-xs text-pretty" style={{ color: 'var(--subtle)' }}>

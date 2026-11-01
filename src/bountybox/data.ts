@@ -5,7 +5,6 @@ import { GRACE_PERIOD_SECONDS, JudgeMode, bountyBoxAbi } from './abi'
 import { BOUNTYBOX_ADDRESS, BOUNTYBOX_DEPLOY_BLOCK, CHAIN_ID, USDC_ADDRESS } from './config'
 
 type RawBounty = ContractFunctionReturnType<typeof bountyBoxAbi, 'view', 'getBounty'>
-type RawClaim = ContractFunctionReturnType<typeof bountyBoxAbi, 'view', 'getClaims'>[number]
 
 export interface Bounty {
   id: bigint
@@ -70,10 +69,6 @@ function mapBounty(r: RawBounty): Bounty {
     contributorCount: Number(r.contributorCount),
     createdAt: Number(r.createdAt),
   }
-}
-
-function mapClaim(c: RawClaim, id: number): Claim {
-  return { id, hunter: c.hunter, proofURL: c.proofURL, note: c.note, handle: c.handle, timestamp: Number(c.timestamp) }
 }
 
 /** The immutable AI judge address of this deployment. */
@@ -176,31 +171,20 @@ export function useBounties() {
   }
 }
 
+/** One bounty. Claims and backers are loaded separately, a page at a time (see paging.ts). */
 export function useBountyDetail(id: bigint) {
-  const result = useReadContracts({
-    contracts: [
-      { address: BOUNTYBOX_ADDRESS, abi: bountyBoxAbi, functionName: 'getBounty', args: [id], chainId: CHAIN_ID },
-      { address: BOUNTYBOX_ADDRESS, abi: bountyBoxAbi, functionName: 'getClaims', args: [id], chainId: CHAIN_ID },
-      { address: BOUNTYBOX_ADDRESS, abi: bountyBoxAbi, functionName: 'getContributors', args: [id], chainId: CHAIN_ID },
-    ],
+  const result = useReadContract({
+    address: BOUNTYBOX_ADDRESS,
+    abi: bountyBoxAbi,
+    functionName: 'getBounty',
+    args: [id],
+    chainId: CHAIN_ID,
     query: { refetchInterval: POLL_MS },
   })
-
-  const [bountyRes, claimsRes, contribRes] = result.data ?? []
-
-  const bounty = bountyRes?.status === 'success' ? mapBounty(bountyRes.result) : undefined
-  const claims: Claim[] = claimsRes?.status === 'success' ? claimsRes.result.map(mapClaim) : []
-  const contributors: Contributor[] =
-    contribRes?.status === 'success'
-      ? contribRes.result[0].map((address, i) => ({ address, share: contribRes.result[1][i] ?? 0n }))
-      : []
-
   return {
-    bounty,
-    claims,
-    contributors,
+    bounty: result.data ? mapBounty(result.data) : undefined,
     isLoading: result.isLoading,
-    notFound: bountyRes?.status === 'failure',
+    notFound: result.isError,
   }
 }
 

@@ -1,4 +1,5 @@
-import { findDuplicateOf } from './dedupe'
+import { proofKeyHash } from './dedupe'
+import { readCursor, readOwners, writeCursor, writeOwners, type BountyCursor } from './cursor'
 import { runChecks, allPassed } from './checks'
 import type { ChainReader } from './chain'
 import type { JudgeConfig } from './config'
@@ -12,7 +13,8 @@ import type { BountyView, ClaimStatus, ClaimView, Store } from './types'
 import { buildVerdict, publishEvidence, readStatus, summarizeReasons, verdictKey, verdictURL, writeStatus } from './verdict'
 
 export interface JudgeDeps {
-  config: Pick<JudgeConfig, 'baseURL' | 'baseIsLocal' | 'maxClaimsPerTick' | 'tickBudgetMs' | 'githubToken' | 'xBearerToken'>
+  config: Pick<JudgeConfig, 'baseURL' | 'baseIsLocal' | 'maxClaimsPerTick' | 'tickBudgetMs' | 'githubToken' | 'xBearerToken'> &
+    Partial<Pick<JudgeConfig, 'claimPageSize' | 'maxScanPerBounty' | 'maxScanPerTick'>>
   store: Store
   chain: ChainReader
   /** Null runs the worker in read-and-publish mode: verdicts are published but nothing is sent onchain. */
@@ -105,7 +107,16 @@ export async function runJudgeTick(deps: JudgeDeps): Promise<TickSummary> {
 
     const closed = await readClosed(deps)
     const count = await deps.chain.bountyCount()
-    let work = 0
+    const budget: Budget = {
+      startedAt,
+      work: 0,
+      scanned: 0,
+      maxWork: deps.config.maxClaimsPerTick,
+      maxScan: deps.config.maxScanPerTick ?? 300,
+      maxScanPerBounty: deps.config.maxScanPerBounty ?? 100,
+      pageSize: Math.min(100, Math.max(1, deps.config.claimPageSize ?? 25)),
+      timeMs: deps.config.tickBudgetMs,
+    }
 
     for (let n = 1; n <= count; n++) {
       const id = BigInt(n)
@@ -120,34 +131,25 @@ export async function runJudgeTick(deps: JudgeDeps): Promise<TickSummary> {
       }
       const done = bounty.status !== 'open' || bounty.hasAccepted || (bounty.claimCount > 0 ? now >= bounty.settlementTime : now >= bounty.expiry)
       if (done) {
-        await markUnresolvedClosed(deps, bounty)
-        closed.add(id.toString())
+        // Finishing a bounty with thousands of claims takes several ticks; it stays out of the closed set until it is done.
+        const result = await closeOut(deps, bounty, budget, nowSeconds)
+        if (result === 'finished') closed.add(id.toString())
+        else {
+          await writeClosed(deps, closed)
+          return { ...summary, skipped: 'work budget reached; continuing next run' }
+        }
         continue
       }
       if (bounty.claimCount === 0) continue
 
-      const claims = await deps.chain.getClaims(id)
-      for (const claim of claims) {
-        if (work >= deps.config.maxClaimsPerTick || Date.now() - startedAt > deps.config.tickBudgetMs) {
-          await writeClosed(deps, closed)
-          return { ...summary, skipped: 'work budget reached; continuing next run' }
-        }
-        const outcome = await processClaim(deps, judge, bounty, claim, claims, log, nowSeconds)
-        if (outcome === 'idle') continue
-        work++
-        if (outcome === 'evaluating-done') summary.evaluated++
-        if (outcome === 'accepted') {
-          summary.evaluated++
-          summary.accepted++
-          closed.add(id.toString())
-          await markUnresolvedClosed(deps, { ...bounty, status: 'paid', hasAccepted: true })
-          break
-        }
-        if (outcome === 'rejected') {
-          summary.evaluated++
-          summary.rejected++
-        }
-        if (outcome === 'retry') summary.retrying++
+      const result = await scanBounty(deps, judge, bounty, budget, summary, log, nowSeconds)
+      if (result === 'accepted') {
+        const closing = await closeOut(deps, { ...bounty, status: 'paid', hasAccepted: true }, budget, nowSeconds)
+        if (closing === 'finished') closed.add(id.toString())
+      }
+      if (result === 'budget') {
+        await writeClosed(deps, closed)
+        return { ...summary, skipped: 'work budget reached; continuing next run' }
       }
     }
     await writeClosed(deps, closed)
@@ -157,26 +159,162 @@ export async function runJudgeTick(deps: JudgeDeps): Promise<TickSummary> {
   }
 }
 
-/** Marks claims that never got a decision as closed so the UI stops showing "pending". */
-async function markUnresolvedClosed(deps: JudgeDeps, bounty: BountyView): Promise<void> {
-  if (bounty.claimCount === 0) return
-  const claims = await deps.chain.getClaims(bounty.id)
-  for (const claim of claims) {
-    const status = await readStatus(deps.store, deps.chain.chainId, bounty.id, claim.id)
-    if (status && (status.state === 'accepted' || status.state === 'rejected' || status.state === 'closed')) continue
-    const now = (deps.nowSeconds ?? (() => Math.floor(Date.now() / 1000)))()
-    await writeStatus(deps.store, deps.chain.chainId, bounty.id, claim.id, {
-      state: 'closed',
-      attempts: status?.attempts ?? 0,
-      nextAttemptAt: 0,
-      updatedAt: now,
-      verdictURL: status?.verdictURL,
-      verdictHash: status?.verdictHash,
-      evidenceURL: status?.evidenceURL,
-      reasons: status?.reasons,
-      lastError: undefined,
-    })
+/* ------------------------- bounded, resumable scans ------------------------- */
+
+interface Budget {
+  startedAt: number
+  work: number
+  scanned: number
+  maxWork: number
+  maxScan: number
+  maxScanPerBounty: number
+  pageSize: number
+  timeMs: number
+}
+
+function outOfBudget(b: Budget, scannedHere: number): boolean {
+  return b.work >= b.maxWork || b.scanned >= b.maxScan || scannedHere >= b.maxScanPerBounty || Date.now() - b.startedAt > b.timeMs
+}
+
+function isFinal(state: string | undefined): boolean {
+  return state === 'accepted' || state === 'rejected' || state === 'closed'
+}
+
+/**
+ * Visits a bounty's claims in ascending order, one page at a time, starting where the previous tick stopped.
+ * Every visit is counted against the budgets, so a bounty with any number of claims costs a bounded amount of
+ * work per tick. The cursor is saved after each page: stopping anywhere (budget, timeout, crash) is safe, and a
+ * claim that already has a final decision is never evaluated again.
+ */
+async function scanBounty(
+  deps: JudgeDeps,
+  judge: `0x${string}`,
+  bounty: BountyView,
+  budget: Budget,
+  summary: TickSummary,
+  log: Logger,
+  nowSeconds: () => number,
+): Promise<'complete' | 'budget' | 'accepted'> {
+  const chainId = deps.chain.chainId
+  const total = bounty.claimCount
+  const cursor = await readCursor(deps.store, chainId, bounty.id)
+  if (cursor.settled >= total) return 'complete'
+
+  const owners = await readOwners(deps.store, chainId, bounty.id)
+  let idx = cursor.next >= total || cursor.next < cursor.settled ? cursor.settled : cursor.next
+  let scannedHere = 0
+  let result: 'complete' | 'budget' | 'accepted' = 'complete'
+
+  const save = async (ownersDirty: boolean) => {
+    if (ownersDirty) await writeOwners(deps.store, chainId, bounty.id, owners)
+    await writeCursor(deps.store, chainId, bounty.id, cursor)
   }
+
+  scan: while (idx < total) {
+    if (outOfBudget(budget, scannedHere)) {
+      result = 'budget'
+      break
+    }
+    const room = Math.min(budget.pageSize, budget.maxScan - budget.scanned, budget.maxScanPerBounty - scannedHere)
+    const { claims: page } = await deps.chain.getClaimsPage(bounty.id, idx, Math.max(1, room))
+    if (page.length === 0) break
+    let ownersDirty = false
+    for (const claim of page) {
+      if (outOfBudget(budget, scannedHere)) {
+        result = 'budget'
+        break
+      }
+      // Claims are first visited in ascending order, so the first claim seen with a given proof link is the earliest.
+      const key = proofKeyHash(claim.proofURL)
+      const prior = owners[key]
+      if (prior === undefined) {
+        owners[key] = claim.id
+        ownersDirty = true
+      }
+      const duplicateOf = prior !== undefined && prior < claim.id ? prior : null
+
+      scannedHere++
+      budget.scanned++
+      const outcome = await processClaim(deps, judge, bounty, claim, duplicateOf, log, nowSeconds)
+      idx = claim.id + 1
+      cursor.next = idx
+      if (outcome !== 'idle') budget.work++
+      if (outcome === 'evaluating-done') summary.evaluated++
+      if (outcome === 'rejected') {
+        summary.evaluated++
+        summary.rejected++
+      }
+      if (outcome === 'retry') summary.retrying++
+      if (outcome === 'accepted') {
+        summary.evaluated++
+        summary.accepted++
+        result = 'accepted'
+        await save(ownersDirty)
+        break scan
+      }
+    }
+    await save(ownersDirty)
+    if (result === 'budget') break
+  }
+
+  if (result !== 'accepted') {
+    if (idx >= total) cursor.next = cursor.settled // lap finished: the next tick starts again from the first unsettled claim
+    await advanceSettled(deps, bounty, cursor, total)
+    await writeCursor(deps.store, chainId, bounty.id, cursor)
+  }
+  return result
+}
+
+/** Moves `settled` forward over claims that already have a final decision (bounded number of store reads). */
+async function advanceSettled(deps: JudgeDeps, bounty: BountyView, cursor: BountyCursor, total: number): Promise<void> {
+  for (let reads = 0; cursor.settled < total && reads < 200; reads++) {
+    const status = await readStatus(deps.store, deps.chain.chainId, bounty.id, cursor.settled)
+    if (!isFinal(status?.state)) return
+    cursor.settled++
+  }
+  if (cursor.next < cursor.settled) cursor.next = cursor.settled
+}
+
+/**
+ * Marks claims that never got a decision as closed so the UI stops showing "pending". Bounded and resumable like
+ * the scan: it returns 'budget' when it must continue on the next tick.
+ */
+async function closeOut(deps: JudgeDeps, bounty: BountyView, budget: Budget, nowSeconds: () => number): Promise<'finished' | 'budget'> {
+  const total = bounty.claimCount
+  if (total === 0) return 'finished'
+  const chainId = deps.chain.chainId
+  const cursor = await readCursor(deps.store, chainId, bounty.id)
+  let idx = Math.max(cursor.closeNext, cursor.settled)
+  let scannedHere = 0
+  while (idx < total) {
+    if (budget.scanned >= budget.maxScan || scannedHere >= budget.maxScanPerBounty || Date.now() - budget.startedAt > budget.timeMs) {
+      cursor.closeNext = idx
+      await writeCursor(deps.store, chainId, bounty.id, cursor)
+      return 'budget'
+    }
+    const status = await readStatus(deps.store, chainId, bounty.id, idx)
+    scannedHere++
+    budget.scanned++
+    if (!isFinal(status?.state)) {
+      await writeStatus(deps.store, chainId, bounty.id, idx, {
+        state: 'closed',
+        attempts: status?.attempts ?? 0,
+        nextAttemptAt: 0,
+        updatedAt: nowSeconds(),
+        verdictURL: status?.verdictURL,
+        verdictHash: status?.verdictHash,
+        evidenceURL: status?.evidenceURL,
+        reasons: status?.reasons,
+        lastError: undefined,
+      })
+    }
+    idx++
+  }
+  cursor.closeNext = total
+  cursor.settled = total
+  cursor.next = total
+  await writeCursor(deps.store, chainId, bounty.id, cursor)
+  return 'finished'
 }
 
 type Outcome = 'idle' | 'evaluating-done' | 'accepted' | 'rejected' | 'retry' | 'approved-pending'
@@ -186,7 +324,7 @@ async function processClaim(
   judge: `0x${string}`,
   bounty: BountyView,
   claim: ClaimView,
-  claims: readonly ClaimView[],
+  duplicateOf: number | null,
   log: Logger,
   nowSeconds: () => number,
 ): Promise<Outcome> {
@@ -200,7 +338,6 @@ async function processClaim(
   if (status.nextAttemptAt > now) return 'idle'
 
   // The same proof link may only win for the claim that submitted it first. No evidence or model call is needed.
-  const duplicateOf = findDuplicateOf(claim, claims)
   if (duplicateOf !== null) {
     const checks = [
       {

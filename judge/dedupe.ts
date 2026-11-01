@@ -1,3 +1,4 @@
+import { createHash } from 'node:crypto'
 import { classifyProof } from './evidence/classify'
 import type { ClaimView } from './types'
 
@@ -59,4 +60,9 @@ export function findDuplicateOf(claim: ClaimView, claims: readonly ClaimView[]):
     if (earliest === null || other.id < earliest) earliest = other.id
   }
   return earliest
+}
+
+/** Compact, stable identity of a proof link for the persisted duplicate index (96 bits of SHA-256). */
+export function proofKeyHash(proofURL: string): string {
+  return createHash('sha256').update(normalizeProofURL(proofURL)).digest('hex').slice(0, 24)
 }

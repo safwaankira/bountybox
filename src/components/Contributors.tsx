@@ -2,15 +2,34 @@ import { useAccount } from 'wagmi'
 import type { Contributor } from '@/bountybox/data'
 import { fmtUsdc } from '@/bountybox/format'
 import { AddressText } from '@/components/CopyButton'
+import { LoadMore } from '@/components/LoadMore'
 
-export function Contributors({ contributors, total, poster }: { contributors: Contributor[]; total: bigint; poster: string }) {
+export function Contributors({
+  contributors,
+  total,
+  poster,
+  count,
+  hasMore,
+  loadingMore,
+  onLoadMore,
+}: {
+  contributors: Contributor[]
+  total: bigint
+  poster: string
+  /** Total number of backers on the contract (the list below may show only the first pages). */
+  count: number
+  hasMore: boolean
+  loadingMore: boolean
+  onLoadMore: () => void
+}) {
   const { address } = useAccount()
-  const sorted = [...contributors].sort((a, b) => (a.share === b.share ? 0 : a.share > b.share ? -1 : 1))
+  // Only sort by size once every backer is loaded; a partial list stays in the order backers joined.
+  const sorted = hasMore ? contributors : [...contributors].sort((a, b) => (a.share === b.share ? 0 : a.share > b.share ? -1 : 1))
 
   return (
     <section className="card p-5">
       <h2 className="display text-xl font-semibold">
-        Backers <span className="tabular-nums" style={{ color: 'var(--subtle)' }}>{contributors.length}</span>
+        Backers <span className="tabular-nums" style={{ color: 'var(--subtle)' }}>{Math.max(count, contributors.length)}</span>
       </h2>
       <ul className="mt-4 space-y-3">
         {sorted.map((c) => {
@@ -33,6 +52,7 @@ export function Contributors({ contributors, total, poster }: { contributors: Co
           )
         })}
       </ul>
+      <LoadMore shown={contributors.length} total={Math.max(count, contributors.length)} hasMore={hasMore} loading={loadingMore} onLoadMore={onLoadMore} noun="backers" />
     </section>
   )
 }

@@ -4,6 +4,7 @@ import type { Store } from './types'
  * Read-only public API for verdicts and evidence. Shared by the Netlify function and the local dev server.
  *
  *   GET /verdicts/<chainId>/<bountyId>/index.json        status of every claim of a bounty
+ *   GET /verdicts/<chainId>/<bountyId>/<claimId>/status.json  status of one claim (use this for paged lists)
  *   GET /verdicts/<chainId>/<bountyId>/<claimId>.json    the published verdict (exact bytes that were hashed)
  *   GET /evidence/<id>/snapshot.json                     the evidence snapshot
  *   GET /evidence/<id>/img/<n>                           a stored evidence image
@@ -33,6 +34,12 @@ export async function handleApi(req: Request, store: Store): Promise<Response> {
   if (index) {
     const text = await store.getText(`status/${index[1]}/${index[2]}/index.json`)
     return text ? json(text, 'public, max-age=10') : notFound()
+  }
+
+  const one = /^\/verdicts\/(\d{1,12})\/(\d{1,12})\/(\d{1,6})\/status\.json$/.exec(path)
+  if (one) {
+    const text = await store.getText(`status/${one[1]}/${one[2]}/${one[3]}.json`)
+    return text ? json(text, 'public, max-age=5') : notFound()
   }
 
   const verdict = /^\/verdicts\/(\d{1,12})\/(\d{1,12})\/(\d{1,6})\.json$/.exec(path)

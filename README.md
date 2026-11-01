@@ -17,6 +17,10 @@ Bounties paid in USDC on Arc. Anyone can post a bounty and fund an escrow, other
 - A separate guardian address can permanently retire the AI judge as an emergency switch. After that the judge can pay nothing, AI-judged bounties accept no new money or claims, and every backer gets their own share back after the deadline (and grace period). The guardian cannot move funds, and poster-judged bounties are unaffected. The app shows a banner when this happens.
 - On AI-judged bounties, "hunter must link their X or GitHub handle" is on by default. It stops copycats, because only a proof written by the linked handle can win.
 - If two claims on an AI-judged bounty submit the same proof link (however it is spelled, and x.com and twitter.com count as the same), only the earliest claim is considered; later copies are rejected as duplicates.
+- **Per-bounty cap:** the AI pot cap applies to each AI-judged bounty on its own. It is not a total across bounties, so many capped bounties can add up.
+- **Grace period:** a single claim submitted before the deadline, even a junk one, adds the 7 day grace period before refunds open.
+- **Never send USDC straight to the contract.** Money sent that way is not credited to any bounty and can never be recovered by anyone. Always add money through the app (Post a bounty or Add to the pot).
+- **Blocklisted contributors:** if USDC has blocklisted a backer's address, that backer's own share cannot be refunded to them (the transfer is refused and cannot be redirected). Every other backer can still refund their own share.
 - A bounty is Open, Paid out (a claim was accepted), or Refunded (every backer has withdrawn their share). Until the last backer withdraws, an expired bounty stays Open but closed to new claims and money, and each remaining backer can still take back their own share.
 
 Built with [Arc Studio](https://studio.arc.io)
@@ -25,7 +29,7 @@ Built with [Arc Studio](https://studio.arc.io)
 
 Each AI-judged claim is checked by automatic verifiers first (GitHub pull request merged and by whom, X post author and date, onchain transaction, linked handle), then scored against the criteria by two independent models. A claim is approved only if both approve with at least 80% confidence. Every verdict, with its reasons and an evidence snapshot, is published, and an approved claim is paid by the judge wallet with the verdict hash recorded onchain. The bounty page shows each claim as Pending AI review, Approved or Rejected with the reasons and links, and the judge's wallet and ERC-8004 agent identity.
 
-The judge runs as a Netlify scheduled function every 5 minutes. Locally you can run one pass with `bun run judge:once`, or the public verdict service with `bun run judge:dev`.
+The judge runs as a Netlify scheduled function every 5 minutes. Claims are read a page at a time and worked through in bounded batches that resume where the last run stopped, so claim spam cannot stall a run. Locally you can run one pass with `bun run judge:once`, or the public verdict service with `bun run judge:dev`.
 
 ## Tech stack
 
@@ -77,7 +81,7 @@ AI judge worker (set these in Netlify's environment settings; never commit them)
 - `CIRCLE_API_KEY`, `CIRCLE_ENTITY_SECRET`, `JUDGE_WALLET_ID`: the judge's Circle wallet that signs payouts.
 - `JUDGE_TRIGGER_SECRET`: shared secret between the scheduled function and the worker.
 - `GITHUB_TOKEN`, `X_BEARER_TOKEN`: optional, for higher GitHub limits and the official X API.
-- `JUDGE_ALLOW_MAINNET`, `JUDGE_RPC_URL`, `JUDGE_MAX_CLAIMS_PER_TICK`, `JUDGE_TICK_BUDGET_MS`: optional tuning.
+- `JUDGE_ALLOW_MAINNET`, `JUDGE_RPC_URL`, `JUDGE_MAX_CLAIMS_PER_TICK`, `JUDGE_TICK_BUDGET_MS`, `JUDGE_CLAIM_PAGE_SIZE`, `JUDGE_MAX_SCAN_PER_BOUNTY`, `JUDGE_MAX_SCAN_PER_TICK`: optional tuning.
 - `RPC_PROXY_BASE_URL`, `RPC_PROXY_TOKEN`, `RPC_PROXY_CHAINS`: optional outside Arc Studio, used only by deploy scripts.
 
 Both `arc-testnet` and `arc-mainnet` are available; the one in `VITE_BOUNTYBOX_NETWORK` is used, together with the contract address and deploy block you set for it. Mainnet uses real USDC. See `DEPLOY_MAINNET.md` for the step-by-step deploy from your own wallet (mainnet uses real USDC; review and audit first).

@@ -12,7 +12,8 @@ export interface ChainReader {
   /** True once the contract's guardian has permanently retired the judge (judgeAccept then always reverts). */
   judgeRetired(): Promise<boolean>
   getBounty(id: bigint): Promise<BountyView>
-  getClaims(id: bigint): Promise<ClaimView[]>
+  /** One bounded page of claims (ids are offset + index). `total` is the bounty's claim count. */
+  getClaimsPage(id: bigint, offset: number, limit: number): Promise<{ claims: ClaimView[]; total: number }>
   /** True once the bounty is closed onchain (paid). */
   isClosed(id: bigint): Promise<boolean>
   getVerdictHash(id: bigint): Promise<Hex>
@@ -59,16 +60,29 @@ export function createChainReader(config: JudgeConfig): ChainReader {
         settlementTime: claimCount > 0 ? expiry + GRACE_PERIOD_SECONDS : expiry,
       }
     },
-    async getClaims(id) {
-      const claims = await client.readContract({ address, abi: bountyBoxAbi, functionName: 'getClaims', args: [id] })
-      return claims.map((c, index) => ({
+    async getClaimsPage(id, offset, limit) {
+      const toView = (c: { hunter: Address; proofURL: string; note: string; handle: string; timestamp: bigint }, index: number): ClaimView => ({
         id: index,
         hunter: c.hunter,
         proofURL: c.proofURL,
         note: c.note,
         handle: c.handle,
         timestamp: Number(c.timestamp),
-      }))
+      })
+      try {
+        const [page, total] = await client.readContract({
+          address,
+          abi: bountyBoxAbi,
+          functionName: 'getClaimsPage',
+          args: [id, BigInt(offset), BigInt(limit)],
+        })
+        return { claims: page.map((c, i) => toView(c, offset + i)), total: Number(total) }
+      } catch (error) {
+        // Contracts deployed before the paged view existed only have getClaims. Slice it so old deployments keep working.
+        if (!/returned no data|could not be decoded|not a function|ContractFunctionZeroDataError|reverted/i.test(String((error as Error).message))) throw error
+        const all = await client.readContract({ address, abi: bountyBoxAbi, functionName: 'getClaims', args: [id] })
+        return { claims: all.slice(offset, offset + limit).map((c, i) => toView(c, offset + i)), total: all.length }
+      }
     },
     async isClosed(id) {
       const b = await client.readContract({ address, abi: bountyBoxAbi, functionName: 'getBounty', args: [id] })

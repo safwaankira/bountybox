@@ -22,8 +22,8 @@
       "pulledAt": "2026-11-01T16:27:34.729Z"
     },
     "README.md": {
-      "hash": "5415596f4fa0d895b28a16d647931891d4ed8e1c04b7518e8bede39a82772064",
-      "pulledAt": "2026-11-01T16:27:34.730Z"
+      "hash": "37479a7410e881213f916fd3391d8a61db94eb1958395658525454135fa4a248",
+      "pulledAt": "2026-11-01T18:44:58.616Z"
     },
     "bun.lock": {
       "hash": "6ae5fd0dba4929d90e314ec45d0464f590018b5a422748fcab08b0d5390179cc",
@@ -135,7 +135,7 @@
     },
     "contracts/cache/solidity-files-cache.json": {
       "hash": "2360d857414e436f8c9b46c31c611d7c43d79e142a79181727a6e6eadc3af5d8",
-      "pulledAt": "2026-11-01T17:24:11.052Z"
+      "pulledAt": "2026-11-01T18:44:58.626Z"
     },
     "contracts/contract-metadata/.gitkeep": {
       "hash": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
@@ -218,16 +218,16 @@
       "pulledAt": "2026-10-28T22:59:18.397Z"
     },
     "src/bountybox/abi.ts": {
-      "hash": "3310b37ed81ffc5d38de12ec92b37c16a744b3533ba66a9dfd8b29d5549c42ea",
-      "pulledAt": "2026-11-01T16:27:34.761Z"
+      "hash": "8626c584207374ca92859e80ddf3b585a46fae86adb23db07f7d21055606ccb5",
+      "pulledAt": "2026-11-01T18:44:58.633Z"
     },
     "src/bountybox/config.ts": {
       "hash": "5e7ab86cb66b3287822efbc216a6345a0a3beea674b1be414d8e503f2b4d2709",
       "pulledAt": "2026-10-28T22:59:18.398Z"
     },
     "src/bountybox/data.ts": {
-      "hash": "3a09c601b413af1cc19c0e0ca673bfd87f5d926d45e4696f7c75ebdfbc5edf83",
-      "pulledAt": "2026-11-01T16:27:34.762Z"
+      "hash": "c600010f1accfe9cb6e2fa2db80ce85d2d32d71de82b0ea60b5e53389104bf7e",
+      "pulledAt": "2026-11-01T18:44:58.634Z"
     },
     "src/bountybox/format.ts": {
       "hash": "a590decd94f3b805b6f1aa6f51af2bf03d3840ce114c07fc9a2bb9b05ed30a0a",
@@ -250,12 +250,12 @@
       "pulledAt": "2026-10-31T22:27:06.538Z"
     },
     "src/components/ClaimsList.tsx": {
-      "hash": "ca9f5a20095360d7dcecaf5cf5a624078a6c5b2f6baccbde3679d1abe2ed5496",
-      "pulledAt": "2026-10-31T22:27:06.538Z"
+      "hash": "1c1dcbdee19e1fe065522b3b2d2a976a92c93e85a5ba33a4adf04955f95c5ef5",
+      "pulledAt": "2026-11-01T18:44:58.636Z"
     },
     "src/components/Contributors.tsx": {
-      "hash": "aa636f37b692f1b87cdc90fe7ec95126ae9616612c6838c0c710985e5ac1c4cc",
-      "pulledAt": "2026-10-31T22:27:06.539Z"
+      "hash": "f10f40b96f3cd4028a6925d395114b4d39fae3ab06e192902eab18b0249302bd",
+      "pulledAt": "2026-11-01T18:44:58.636Z"
     },
     "src/components/GateButton.tsx": {
       "hash": "ab7962318cacb2337ce65526c83bf18bca880fd2d99cc45dc1e003fef45ff71e",
@@ -278,12 +278,12 @@
       "pulledAt": "2026-10-31T22:27:06.541Z"
     },
     "src/pages/BountyPage.tsx": {
-      "hash": "321c731ae41f6048ff716d1b97c3a2d33e6b0c77401c1b2ac3271e9d9454291f",
-      "pulledAt": "2026-11-01T16:27:34.767Z"
+      "hash": "f900609e48a6afaac2a5ff68fb00af56f42e9045497ea9924e5d68ac406ae9b9",
+      "pulledAt": "2026-11-01T18:44:58.637Z"
     },
     "src/pages/Create.tsx": {
-      "hash": "45e0c037aeac0e412df828861d3a2319c46030032389c7cbbc0dd9f06ea78c76",
-      "pulledAt": "2026-11-01T16:27:34.768Z"
+      "hash": "05d9324e3a63e4c5cafac58fcb779098590a80157d2233a474a9b7dac728e124",
+      "pulledAt": "2026-11-01T18:44:58.638Z"
     },
     "src/pages/Home.tsx": {
       "hash": "b6f93864aaacdd9fc942f40520991b2fb985e8e71cadfc9b061ce3602cb022d1",
@@ -379,15 +379,15 @@
     },
     "contracts/out/IERC1363.sol/IERC1363.json": {
       "hash": "13bcf1515e7641b4f5aed5a1afff165ca766ebf87d89a56de032a64407897e75",
-      "pulledAt": "2026-11-01T17:24:11.130Z"
+      "pulledAt": "2026-11-01T18:44:58.698Z"
     },
     "contracts/out/IERC165.sol/IERC165.json": {
       "hash": "bca22e051902a99825987d56f71cdb64c0a36d82b26683334da454fb54c93ee1",
-      "pulledAt": "2026-11-01T17:24:11.132Z"
+      "pulledAt": "2026-11-01T18:44:58.698Z"
     },
     "contracts/out/IERC20.sol/IERC20.json": {
       "hash": "24b6d69839039cf6655904ef7e66d24878360a2584f48063bd1c7d7b33f3d745",
-      "pulledAt": "2026-11-01T17:24:11.132Z"
+      "pulledAt": "2026-11-01T18:44:58.698Z"
     },
     "contracts/out/IMulticall3.sol/IMulticall3.json": {
       "hash": "3b4a16e39ad3286af9705fa0a0b7d678d5c31f6e98306e2d27c51da3e0d869f6",
@@ -399,11 +399,11 @@
     },
     "contracts/out/ReentrancyGuard.sol/ReentrancyGuard.json": {
       "hash": "857ebabc499d84acdbf060f3fbb24b4bd1f8d71960a0651ce306e9f66f5583be",
-      "pulledAt": "2026-11-01T17:24:11.133Z"
+      "pulledAt": "2026-11-01T18:44:58.699Z"
     },
     "contracts/out/SafeERC20.sol/SafeERC20.json": {
       "hash": "e910a3710067e6e428a8808e48e4ff1aefa02bbb0a393f4fba14e51dc5e20cfa",
-      "pulledAt": "2026-11-01T17:24:11.134Z"
+      "pulledAt": "2026-11-01T18:44:58.700Z"
     },
     "contracts/out/Script.sol/Script.json": {
       "hash": "3f025eaf660e5298c102c1cc215336900b4884c5fada92b8f32b47a2d97955e0",
@@ -467,7 +467,7 @@
     },
     "contracts/out/StorageSlot.sol/StorageSlot.json": {
       "hash": "7661206f1c67bc5fb64b8bac4bc49037082d84d61580ce3922851fcb7b242a53",
-      "pulledAt": "2026-11-01T17:24:11.141Z"
+      "pulledAt": "2026-11-01T18:44:58.703Z"
     },
     "contracts/out/Test.sol/Test.json": {
       "hash": "e0296a8d719b825b7d547c84554cbea32fe1f1ac4378f9c8729d37430804ff11",
@@ -774,20 +774,20 @@
       "pulledAt": "2026-11-01T17:24:11.041Z"
     },
     "judge/api.ts": {
-      "hash": "0a1022d27083cc93b517e266bbf861b525d6182cd9e2cd629fad006a50f8ab4a",
-      "pulledAt": "2026-10-30T12:11:33.418Z"
+      "hash": "59983039024a41b015a0e3b77393c76e83e84ef5b25933df27cd6c11cfa85d40",
+      "pulledAt": "2026-11-01T18:44:58.619Z"
     },
     "judge/chain.ts": {
-      "hash": "bd7c666ed855a962f309e75f7491dfcf8eb0d152e9507048d138a47fdc066747",
-      "pulledAt": "2026-11-01T16:27:34.737Z"
+      "hash": "3218b07d6cee1cfd2becd6fbfd1a2e5dea64537a8e4394e0039032e5ed0b472e",
+      "pulledAt": "2026-11-01T18:44:58.620Z"
     },
     "judge/checks.ts": {
       "hash": "b48f654c6cee3b4f2f064871c2265ce2032db2557225b0c37e12404a02fa0ae8",
       "pulledAt": "2026-10-30T12:11:33.419Z"
     },
     "judge/config.ts": {
-      "hash": "04c1b176b6be6199789576f73915574f98ade508cb21741d00755744da11c6e2",
-      "pulledAt": "2026-10-31T22:27:06.510Z"
+      "hash": "014dd53ab786015fa054f6cbb89fadb00249f7010277d0d411d08b0375143b24",
+      "pulledAt": "2026-11-01T18:44:58.620Z"
     },
     "judge/deps.ts": {
       "hash": "88d859d8c01188b98d481b777fe6c16e712860a733fd94944e40061684c61838",
@@ -802,8 +802,8 @@
       "pulledAt": "2026-10-30T12:11:33.419Z"
     },
     "judge/run.ts": {
-      "hash": "964c8c0eabd1c141cdc509f5656cfee4c0520c8e70536f6d24e60ae98f0bbe58",
-      "pulledAt": "2026-11-01T16:27:34.739Z"
+      "hash": "996a3e087dc52c8af4f8ed00bd8d96204742fad1bd18c0774a4d7633985d448a",
+      "pulledAt": "2026-11-01T18:44:58.622Z"
     },
     "judge/safeFetch.ts": {
       "hash": "a6b6b9703b2a6237998c2e204dfccda55c6649dbac93b476cd5849bcc1b517d6",
@@ -822,8 +822,8 @@
       "pulledAt": "2026-10-30T12:11:33.420Z"
     },
     "judge/verdict.ts": {
-      "hash": "aed4a7a82130c7c1dd963f92d02e18c709f832d75e8af6cbecfa066cc90b2b68",
-      "pulledAt": "2026-11-01T16:27:34.739Z"
+      "hash": "9c11db662447f58b7b5e1af2d37a7c3b633bfd66208ff78d4c42bc7967215de7",
+      "pulledAt": "2026-11-01T18:44:58.622Z"
     },
     "public/_redirects": {
       "hash": "49dbab673306115d5745c7a868b43085e54fa63cccd39a2b5b58f9491ce6f941",
@@ -846,8 +846,8 @@
       "pulledAt": "2026-10-30T12:11:33.423Z"
     },
     "scripts/judge-selftest.ts": {
-      "hash": "3eb48e2ca1a6edf90d0c41b9baf62fad78373b0ac10eae376d556aa8b5756511",
-      "pulledAt": "2026-11-01T16:27:34.744Z"
+      "hash": "949ae1be468d98ba01194e0e1d5d148272073d3d5ee3667e6eabc623269c0b6e",
+      "pulledAt": "2026-11-01T18:44:58.624Z"
     },
     "scripts/judge-setup-wallet.ts": {
       "hash": "5a330650586ee4db7b11e415ccb052f163d5ec8f0179116a4012b89f36ff0b72",
@@ -938,8 +938,8 @@
       "pulledAt": "2026-10-30T12:11:33.435Z"
     },
     "src/bountybox/judge.ts": {
-      "hash": "671da73c64b2c385fe31c32db41afe407fec1bd17f5dcf523bf2d201d41b4f65",
-      "pulledAt": "2026-10-31T22:27:06.537Z"
+      "hash": "75a477e189cc758ca960b8863f1e73225b8a81b508434e84d3c4453a75ee55ef",
+      "pulledAt": "2026-11-01T18:44:58.634Z"
     },
     "src/bountybox/receipt.ts": {
       "hash": "fad8196376de8cd537a06a4de066d780e687e89a30a069625f2c6e0965302ca7",
@@ -967,7 +967,7 @@
     },
     "contracts/out/BountyBoxV2.Invariant.t.sol/BountyBoxV2InvariantTest.json": {
       "hash": "20109d08608dbcd0798b49beca2a8e46c4927c3027cfc10d9c3f3a31a49375bf",
-      "pulledAt": "2026-11-01T17:24:11.103Z"
+      "pulledAt": "2026-11-01T18:44:58.663Z"
     },
     "contracts/out/BountyBoxV2.Poster.t.sol/BountyBoxV2PosterTest.json": {
       "hash": "87ce34e2565389ccbae3c5059dc4475f75cecd7b255620e85b6caea5140c5454",
@@ -983,7 +983,7 @@
     },
     "contracts/out/BountyBoxV2.sol/BountyBoxV2.json": {
       "hash": "c076f6bdb7bbf6b5cd10a24a21358c261ee60b834244b4ee9fcc63279543aa97",
-      "pulledAt": "2026-11-01T17:24:11.116Z"
+      "pulledAt": "2026-11-01T18:44:58.684Z"
     },
     "contracts/out/BountyBoxV2.t.sol/BountyBoxV2Test.json": {
       "hash": "575b045fdc2720d623758af21154cedd22b43180765baf7dafc82f1e4585bb2f",
@@ -1030,8 +1030,8 @@
       "pulledAt": "2026-10-31T22:27:06.539Z"
     },
     "judge/dedupe.ts": {
-      "hash": "82aef2f59c8796f83c70fcb93bacbece14dc964379397cb468b9efe59af71e11",
-      "pulledAt": "2026-11-01T16:27:34.738Z"
+      "hash": "c6de1d32f9285ae22dc158e5982329134883375ca8a4e2b9d563927f65c5e7fa",
+      "pulledAt": "2026-11-01T18:44:58.621Z"
     },
     "contracts/test/BountyBoxV2.Hardening.t.sol": {
       "hash": "c631add9bf58db086eb38e554ee372e2f6377db21a7f0a5135677b36a9a67a90",
@@ -1063,7 +1063,7 @@
     },
     "contracts/out/BountyBoxV2.HardeningInvariant.t.sol/BountyBoxV2HardeningInvariantTest.json": {
       "hash": "dfccf63034b5b9bbeedb5542f182dc7cbbae406af54998b1d53d8a1618a06e70",
-      "pulledAt": "2026-11-01T17:24:11.095Z"
+      "pulledAt": "2026-11-01T18:44:58.656Z"
     },
     "contracts/out/BountyBoxV2.HardeningInvariant.t.sol/HardeningHandler.json": {
       "hash": "8b793e768a5a93015fd08eb93069932b8e6dfaa122a23867dcd4a61e512c670d",
@@ -1079,7 +1079,7 @@
     },
     "contracts/out/BountyBoxV2.sol/BountyBoxV2Errors.json": {
       "hash": "df03cf9c1a3411dd4ae1a7219d4234de3a4a47c28271e35b47b5524e5a6a8179",
-      "pulledAt": "2026-11-01T17:24:11.118Z"
+      "pulledAt": "2026-11-01T18:44:58.685Z"
     },
     "contracts/out/build-info/03c0012e71fda628.json": {
       "hash": "4f2be175f115ffea3ac9d91fc2359cdfe9837656342ef4fbd33b785b4905826b",
@@ -1107,7 +1107,7 @@
     },
     "cache/test-failures": {
       "hash": "ee825b844a973983de0c8d0690174c9b35713a4c96451fb794d01a358c8afe60",
-      "pulledAt": "2026-11-01T17:24:11.039Z"
+      "pulledAt": "2026-11-01T18:44:58.618Z"
     },
     "contracts/test-helpers/ConfigurableUSDC.sol": {
       "hash": "5b7257278d34072032b874311c34f9b5ed1f9d38638b3441c7ce533aa119e903",
@@ -1151,7 +1151,7 @@
     },
     "contracts/out/BountyBoxV2.Invariant.t.sol/BountyBoxV2GuardianBiasInvariantTest.json": {
       "hash": "2e1df6c91eb867af3c2f4c3308cc90a3ed67836fa24a47766d20123547c8f99d",
-      "pulledAt": "2026-11-01T17:24:11.101Z"
+      "pulledAt": "2026-11-01T18:44:58.661Z"
     },
     "contracts/out/BountyBoxV2.ReviewBase.t.sol/ReviewBase.json": {
       "hash": "4c3d861d32459204132a21bbf7c03874aedef47f61a525a2f3e85e00eb70e403",
@@ -1163,19 +1163,19 @@
     },
     "contracts/out/BountyBoxV2.ReviewDonations.t.sol/ReviewDonationsTest.json": {
       "hash": "a31c664411ef388d74ca482bfc2542164e1ca3eebb58d16f921112ce2c137b56",
-      "pulledAt": "2026-11-01T17:24:11.107Z"
+      "pulledAt": "2026-11-01T18:44:58.669Z"
     },
     "contracts/out/BountyBoxV2.ReviewHandler.t.sol/ReviewInvariantHandler.json": {
       "hash": "326f47c7361ba0085cb1863c3dc0f490ac465d149a2b0513a62874c6bb70dfe7",
-      "pulledAt": "2026-11-01T17:24:11.108Z"
+      "pulledAt": "2026-11-01T18:44:58.672Z"
     },
     "contracts/out/BountyBoxV2.ReviewInvariantBase.t.sol/ReviewInvariantBase.json": {
       "hash": "f8e2e032c169be3ac82454dee2aefa6d43542903710e68b0cb951e18dc63f923",
-      "pulledAt": "2026-11-01T17:24:11.108Z"
+      "pulledAt": "2026-11-01T18:44:58.675Z"
     },
     "contracts/out/BountyBoxV2.ReviewJudge.t.sol/ReviewJudgeTest.json": {
       "hash": "a77c82c92574e32cfa43127c8e8cc59c04cb132957c408ecda2fdbcdf213d8a1",
-      "pulledAt": "2026-11-01T17:24:11.108Z"
+      "pulledAt": "2026-11-01T18:44:58.676Z"
     },
     "contracts/out/BountyBoxV2.ReviewPagination.t.sol/ReviewPaginationTest.json": {
       "hash": "d46d955f2ae85c4387e3ca3c09bdaf4c5d58096b041e88a90b72df3f55d6fe7f",
@@ -1187,7 +1187,7 @@
     },
     "contracts/out/BountyBoxV2.ReviewTransferFrom.t.sol/ReviewTransferFromTest.json": {
       "hash": "a4fed9d1c55f95cfc0cc2f575ced035e02f60fc1621ac7a2a06585f5825055bb",
-      "pulledAt": "2026-11-01T17:24:11.109Z"
+      "pulledAt": "2026-11-01T18:44:58.679Z"
     },
     "contracts/out/ConfigurableUSDC.sol/ConfigurableUSDC.json": {
       "hash": "35cf1906fee04e2b6acc970e715a6a4fa4d2d6895c3096436a20751a59e8cb85",
@@ -1212,6 +1212,26 @@
     "contracts/out/build-info/e4cf9ce20a6bc4f0.json": {
       "hash": "4269dbe615c81e6507b22b4a09788778de0fd619d5872bf65fb911ca1407eefa",
       "pulledAt": "2026-11-01T17:24:11.153Z"
+    },
+    ".gitignore": {
+      "hash": "666a9e2af2c24b3d1d35172f3241a8b60a17bac18087f986723a89922575e97a",
+      "pulledAt": "2026-11-01T18:44:58.614Z"
+    },
+    "judge/cursor.ts": {
+      "hash": "c90cd78019fe5d3092c9f79a03b841276790dfefc6733048151065334b6a5f88",
+      "pulledAt": "2026-11-01T18:44:58.621Z"
+    },
+    "src/bountybox/paging.ts": {
+      "hash": "7a91d2c47e6395191e4c5eeb85dc1f51c6a428f9ba67510f87889d498685d58d",
+      "pulledAt": "2026-11-01T18:44:58.635Z"
+    },
+    "src/components/LoadMore.tsx": {
+      "hash": "bf478507785380a5f2ef4997cfb7a9cbc659af271e62adc11062d1f7b41ed4ea",
+      "pulledAt": "2026-11-01T18:44:58.636Z"
+    },
+    "src/components/SafetyNotes.tsx": {
+      "hash": "b7795537128954b8dd529196eb6370d7bdfaa933e250875bcdbecf2ef503507b",
+      "pulledAt": "2026-11-01T18:44:58.637Z"
     }
   }
 }
